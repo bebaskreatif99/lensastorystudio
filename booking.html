@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Booking - Lensa Story Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Lensa Story Studio" class="img-logo">
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan Studio</a></li>
+            <li><a href="event.html">Event & Party</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
+        </ul>
+    </nav>
+
+    <section class="booking-section">
+        <div class="booking-container">
+            <div class="booking-header">
+                <h2>Formulir <span>Reservasi</span></h2>
+                <p>Isi data di bawah ini untuk membuat janji temu otomatis via WhatsApp Lensa Story.</p>
+            </div>
+            
+            <form id="bookingForm" class="booking-form">
+                
+                <div class="form-group" style="background: #f4fbfb; padding: 15px; border-radius: 8px; border-left: 4px solid #00433f;">
+                    <label for="studio" style="font-weight: 600; color: #00433f;">1. Pilih Lokasi / Jenis Layanan <span class="required">*</span></label>
+                    <select id="studio" class="form-control" required onchange="updatePilihanPaket()" style="border-color: #00433f; margin-top: 10px;">
+                        <option value="" disabled selected>-- Pilih Studio atau Event --</option>
+                        <option value="grogol">Studio 1 (Grogol - Utama)</option>
+                        <option value="pabelan">Studio 2 (Pabelan - Cabang)</option>
+                        <option value="event">Layanan Event & Outdoor (Panggilan / On-Location)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="paket">2. Pilih Kategori & Paket <span class="required">*</span></label>
+                    <select id="paket" class="form-control" required disabled>
+                        <option value="" disabled selected>-- Silakan Pilih Lokasi/Layanan di Atas --</option>
+                    </select>
+                </div>
+
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 30px 0;">
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap / Instansi <span class="required">*</span></label>
+                    <input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso / PT. ABC" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="wa">Nomor WhatsApp <span class="required">*</span></label>
+                    <input type="tel" id="wa" class="form-control" placeholder="Contoh: 081234567xxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Akun Instagram <span class="optional">(Bisa dikosongkan)</span></label>
+                    <input type="text" id="instagram" class="form-control" placeholder="Contoh: @budisnt_">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label id="label-tanggal" for="tanggal">Tanggal Pelaksanaan <span class="required">*</span></label>
+                        <input type="date" id="tanggal" class="form-control" required>
+                    </div>
+                    <div class="form-group col-6">
+                        <label id="label-jam" for="jam">Jam / Waktu <span class="required">*</span></label>
+                        <input type="time" id="jam" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="label-orang" for="jumlah_orang">Jumlah Orang <span class="optional">(Isi perkiraan tamu jika pesan Event)</span> <span class="required">*</span></label>
+                    <input type="text" id="jumlah_orang" class="form-control" placeholder="Contoh: 3 Orang / 200 Tamu" required>
+                </div>
+
+                <div class="form-group">
+                    <label id="label-tambahan" for="tambahan">Alamat Lokasi Acara / Tambahan (Opsional)</label>
+                    <input type="text" id="tambahan" class="form-control" placeholder="Contoh: Alamat hotel / Extra Time 5 mnt, dll">
+                </div>
+
+                <button type="submit" class="btn-submit" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Konfirmasi Booking via WA</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="kontak" class="footer">
+        <div class="footer-top">
+            <h2>Lensa Story Studio</h2>
+            <p class="slogan">"Capture Moment, Creating Memories"</p>
+            <div class="socials-center">
+                <a href="https://instagram.com/lensastorystudio.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/lensastorypabelan.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@lensastorystudio.id" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Utama</div>
+                <h4>Studio 1 (Grogol)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span>Open Daily: 09.00 - 21.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2389-2500</span></li>
+                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorystudio.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Cabang</div>
+                <h4>Studio 2 (Pabelan)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span>Open Daily: 12.00 - 20.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2519-9415</span></li>
+                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorypabelan.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lensa Story Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Database Paket berdasarkan Pilihan (Grogol, Pabelan, atau Event)
+        const databasePaket = {
+            "grogol": [
+                { 
+                    kategori: "SELF PHOTO STUDIO", 
+                    daftar: [
+                        "Basic Self Photo - SOLO (Rp 45.000)", 
+                        "Basic Self Photo - BESTIE (Rp 85.000)", 
+                        "Basic Self Photo - SQUAD (Rp 100.000)", 
+                        "Creative Box - SOLO (Rp 25.000)", 
+                        "Creative Box - BESTIE (Rp 60.000)", 
+                        "Creative Box - SQUAD (Rp 90.000)", 
+                        "Creative Selfie ALL IN (Rp 200.000)"
+                    ] 
+                },
+                { 
+                    kategori: "PHOTO STUDIO", 
+                    daftar: [
+                        "Paket Prewedding (Rp 950.000)", 
+                        "Pass Photo (Rp 35.000)", 
+                        "Pass Photo Couple (Rp 50.000)", 
+                        "Personal Photo (Rp 100.000)", 
+                        "Family Photo - GOLD (Rp 500.000)", 
+                        "Family Photo - SILVER (Rp 350.000)", 
+                        "Graduation Indoor - GOLD (Rp 500.000)", 
+                        "Graduation Indoor - SILVER (Rp 350.000)", 
+                        "Graduation Outdoor - GOLD (Rp 750.000)", 
+                        "Graduation Outdoor - SILVER (Rp 450.000)", 
+                        "Maternity - GOLD (Rp 500.000)", 
+                        "Maternity - SILVER (Rp 350.000)", 
+                        "Group Photo - GOLD (Rp 700.000)", 
+                        "Group Photo - OUTDOOR (Rp 950.000)", 
+                        "Birthday Photo - GOLD (Rp 500.000)", 
+                        "Birthday Photo - SILVER (Rp 350.000)"
+                    ] 
+                }
+            ],
+            "pabelan": [
+                { 
+                    kategori: "SELF PHOTO STUDIO", 
+                    daftar: [
+                        "Self Photo - SOLO (Rp 45.000)", 
+                        "Self Photo - BESTIE (Rp 85.000)", 
+                        "Self Photo - SQUAD (Rp 100.000)"
+                    ] 
+                },
+                { 
+                    kategori: "PHOTO STUDIO", 
+                    daftar: [
+                        "Paket Prewedding (Rp 950.000)", 
+                        "Pas Photo (Rp 35.000)", 
+                        "Personal Photo (Rp 100.000)", 
+                        "Family Photo - GOLD (Rp 500.000)", 
+                        "Family Photo - SILVER (Rp 350.000)", 
+                        "Graduation Photo - GOLD (Rp 500.000)", 
+                        "Graduation Photo - SILVER (Rp 350.000)", 
+                        "Maternity Photo - GOLD (Rp 500.000)", 
+                        "Maternity Photo - SILVER (Rp 350.000)", 
+                        "Group Photo - GOLD (Rp 500.000)", 
+                        "Group Photo - SILVER (Rp 350.000)", 
+                        "Birthday Photo - GOLD (Rp 500.000)", 
+                        "Birthday Photo - SILVER (Rp 350.000)"
+                    ] 
+                }
+            ],
+            // TAMBAHAN DATABASE BARU KHUSUS EVENT & OUTDOOR
+            "event": [
+                { 
+                    kategori: "PHOTOBOOTH - QUOTAS PACKAGE", 
+                    daftar: [
+                        "Photobooth 50 Pack (Rp 1.200.000)", 
+                        "Photobooth 100 Pack (Rp 1.500.000)", 
+                        "Photobooth 150 Pack (Rp 1.900.000)", 
+                        "Photobooth 200 Pack (Rp 2.200.000)",
+                        "Photobooth 300 Pack (Rp 2.550.000)"
+                    ] 
+                },
+                { 
+                    kategori: "PHOTOBOOTH - UNLIMITED PACKAGE", 
+                    daftar: [
+                        "Photobooth Unlimited 1 Jam (Rp 2.000.000)", 
+                        "Photobooth Unlimited 2 Jam (Rp 2.900.000)", 
+                        "Photobooth Unlimited 3 Jam (Rp 3.200.000)", 
+                        "Photobooth Unlimited 4 Jam (Rp 3.900.000)",
+                        "Photobooth Unlimited 5 Jam (Rp 4.200.000)"
+                    ] 
+                },
+                { 
+                    kategori: "EVENT DOCUMENTATION (OUTDOOR)", 
+                    daftar: [
+                        "Paket Essential (Photo Only) 3 Jam (Rp 1.500.000)", 
+                        "Paket Cinematic (Photo + Video) 3 Jam (Rp 1.950.000)"
+                    ] 
+                }
+            ]
+        };
+
+        // Fungsi Memunculkan Pilihan Paket Sesuai Pilihan Utama
+        function updatePilihanPaket() {
+            const studioPilihan = document.getElementById('studio').value;
+            const selectPaket = document.getElementById('paket');
+            
+            // Kosongkan dan aktifkan dropdown
+            selectPaket.innerHTML = '<option value="" disabled selected>-- Pilih Kategori & Paket --</option>';
+            selectPaket.disabled = false;
+
+            // Suntik opsi dari database
+            if(databasePaket[studioPilihan]) {
+                databasePaket[studioPilihan].forEach(grup => {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = grup.kategori;
+                    
+                    grup.daftar.forEach(namaPaket => {
+                        const option = document.createElement('option');
+                        option.value = namaPaket;
+                        option.textContent = namaPaket;
+                        optgroup.appendChild(option);
+                    });
+                    
+                    selectPaket.appendChild(optgroup);
+                });
+            }
+        }
+
+        // Fungsi Redirect Pesan ke WhatsApp
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const wa = document.getElementById('wa').value;
+            const instagram = document.getElementById('instagram').value || '-';
+            const tanggal = document.getElementById('tanggal').value;
+            const jam = document.getElementById('jam').value;
+            const paket = document.getElementById('paket').value;
+            const jumlah_orang = document.getElementById('jumlah_orang').value;
+            const tambahan = document.getElementById('tambahan').value || '-';
+            const studioSelect = document.getElementById('studio').value;
+
+            let targetWa = "";
+            let textStudio = "";
+            
+            // Routing WA (Event diteruskan ke Admin Utama Grogol)
+            if (studioSelect === "grogol") {
+                targetWa = "6285723892500"; 
+                textStudio = "Studio 1 (Grogol)";
+            } else if (studioSelect === "pabelan") {
+                targetWa = "6285725199415"; 
+                textStudio = "Studio 2 (Pabelan)";
+            } else if (studioSelect === "event") {
+                targetWa = "6285723892500"; // WA Utama untuk Event
+                textStudio = "Layanan Event / Outdoor (On-Location)";
+            }
+
+            const message = `Halo Admin Lensa Story, saya ingin melakukan Reservasi/Booking Layanan:\n\n` +
+                            `• *Nama / Instansi :* ${nama}\n` +
+                            `• *No WA :* ${wa}\n` +
+                            `• *Instagram :* ${instagram}\n` +
+                            `• *Tanggal Acara :* ${tanggal}\n` +
+                            `• *Jam Pelaksanaan :* ${jam}\n` +
+                            `• *Pilihan Paket :* ${paket}\n` +
+                            `• *Estimasi Tamu/Orang :* ${jumlah_orang}\n` +
+                            `• *Lokasi Acara/Catatan :* ${tambahan}\n` +
+                            `• *Tipe Layanan :* ${textStudio}\n\n` +
+                            `Note: Saya mengharapkan konfirmasi terkait ketersediaan tim untuk lokasi acara saya.\n` +
+                            `Terima kasih, Lensa Story Studio!`;
+
+            const waUrl = `https://api.whatsapp.com/send?phone=${targetWa}&text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        });
+    </script>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            // Membuka atau menutup sidebar menu
+            navLinks.classList.toggle('active');
+            
+            // Mengganti ikon garis tiga (bars) menjadi silang (times)
+            const icon = mobileMenu.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

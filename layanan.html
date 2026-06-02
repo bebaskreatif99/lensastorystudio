@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan & Harga - Lensa Story Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Lensa Story Studio" class="img-logo">
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan Studio</a></li>
+            <li><a href="event.html">Event & Party</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Katalog Layanan <span>& Harga</span></h1>
+        <p>Pilih paket terbaik untuk mengabadikan momen berhargamu.</p>
+    </div>
+
+    <div class="studio-selector" id="studio-selector-container" style="margin-top: 40px; margin-bottom: -20px;">
+        <button id="btn-studio1" class="btn-studio active" onclick="gantiStudioLayanan('studio1')"><i class="fas fa-store"></i> Studio 1 (Grogol)</button>
+        <button id="btn-studio2" class="btn-studio" onclick="gantiStudioLayanan('studio2')"><i class="fas fa-store"></i> Studio 2 (Pabelan)</button>
+    </div>
+
+    <section class="price-section" id="content-studio1">
+        <h2 class="category-main-title"><i class="fas fa-camera"></i> SELF PHOTO STUDIO</h2>
+        <div class="price-grid">
+            
+            <div class="price-card">
+                <div class="badge-popular">Best Seller 🔥</div>
+                <img class="card-cover" data-kategori="selfphoto" src="" alt="Cover Basic Self Photo">
+                <div class="card-header">
+                    <h3>1. Basic Self Photo</h3>
+                    <p class="desc">Konsep studio mandiri dengan berbagai pilihan warna background. Briefing & remote disediakan.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="promo-box"><i class="fas fa-star"></i> Promo: *All digital file FREE (Follow IG)</div>
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SOLO</h4><span class="price">Rp 45.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 10 menit</li>
+                                <li><i class="fas fa-user"></i> 1 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 10 File Digital</li>
+                                <li><i class="fas fa-print"></i> 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>BESTIE</h4><span class="price">Rp 85.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-users"></i> 1-2 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 20 File Digital</li>
+                                <li><i class="fas fa-print"></i> 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SQUAD</h4><span class="price-old">Rp 120.000</span><span class="price">Rp 100.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-users"></i> 1-5 Orang</li>
+                                <li><i class="fas fa-file-image"></i> Semua File Digital</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/selfphoto/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/selfphoto/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/selfphoto/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="creativebox" src="" alt="Cover Creative Box">
+                <div class="card-header">
+                    <h3>2. Creative Box</h3>
+                    <p class="desc">Konsep foto mandiri di dalam sebuah Box. Tersedia 2 pilihan tema unik.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="promo-box"><i class="fas fa-star"></i> Promo: *All digital file FREE (Follow IG)</div>
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SOLO</h4><span class="price">Rp 25.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 10 menit</li>
+                                <li><i class="fas fa-user"></i> 1 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 10 File Digital</li>
+                                <li><i class="fas fa-print"></i> 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>BESTIE</h4><span class="price">Rp 60.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-users"></i> 1-2 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 20 File Digital</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak Strip / 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SQUAD</h4><span class="price">Rp 90.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-user-plus"></i> Extra hingga 4 orang</li>
+                                <li><i class="fas fa-file-image"></i> Semua File Digital</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak Strip / 2 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/creativebox/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/creativebox/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/creativebox/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="creativeselfie" src="" alt="Cover Creative Selfie">
+                <div class="card-header">
+                    <h3>3. Creative Selfie</h3>
+                    <p class="desc">Bebas mengatur angle kamera dan background lighting sesuai kreasi Anda.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages single-package-mt">
+                        <div class="pack-item highlight-pack">
+                            <div class="pack-name-price"><h4>ALL IN PACKAGE</h4><span class="price highlight-price">Rp 200.000</span></div>
+                            <ul class="pack-list-detail">
+                                <li><i class="fas fa-check-circle"></i> Sesi 25 menit | 1-3 Orang</li>
+                                <li><i class="fas fa-check-circle"></i> Semua File Digital & 3 Cetak 4R</li>
+                                <li><i class="fas fa-check-circle"></i> Didampingi 1 Crew Assistance</li>
+                            </ul>
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/creativeselfie/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/creativeselfie/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/creativeselfie/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="card-header" style="padding-top: 40px;">
+                    <h3>4. Additional (Self Photo)</h3>
+                    <p class="desc">Layanan tambahan kustomisasi sesi Self Photo Studio Anda.</p>
+                    <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <ul class="pack-list-detail extra-list-style">
+                            <li><span>SelfPhoto Style</span> <span class="price">Rp 25.000</span></li>
+                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>Extra Person / Pet</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>Extra Background</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>All Digital files</span> <span class="price">Rp 15.000</span></li>
+                        </ul>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-main-title" style="margin-top: 80px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
+        <div class="price-grid">
+            
+            <div class="price-card">
+                <div class="badge-popular rec">Recommended ✨</div>
+                <img class="card-cover" data-kategori="prewedding" src="" alt="Cover Prewedding">
+                <div class="card-header">
+                    <h3>Prewedding</h3>
+                    <p class="desc">Dokumentasikan kisah cinta Anda dengan konsep indoor & outdoor elegan.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item highlight-pack">
+                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price highlight-price">Rp 950.000</span></div>
+                            <ul class="pack-list-detail">
+                                <li><i class="fas fa-clock"></i> 60 Menit Sesi Foto</li>
+                                <li><i class="fas fa-user-tie"></i> 1 Profesional Fotografer + Kru</li>
+                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (Indoor & Outdoor)</li>
+                                <li><i class="fas fa-compact-disc"></i> Semua File Digital (Master)</li>
+                                <li><i class="fas fa-print"></i> 4 Lembar Cetak 4R & 2 Lembar 10R</li>
+                            </ul>
+                        </div>
+                        <div class="extra-charge-box"><i class="fas fa-plus"></i> <span>Extra MUA & Fitting:</span> Rp 1.500.000</div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/prewedding/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/prewedding/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/prewedding/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="passphoto" src="" alt="Cover Pass Photo">
+                <div class="card-header">
+                    <h3>Pass Photo & Personal</h3>
+                    <p class="desc">Kebutuhan foto resmi dokumen dan potret personal profesional.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>PASS PHOTO</h4><span class="price">Rp 35.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-user"></i> 1 Orang | Fotografer</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>PASS PHOTO COUPLE</h4><span class="price">Rp 50.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-users"></i> 2 Orang | Fotografer</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>PERSONAL PHOTO</h4><span class="price">Rp 100.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-user-astronaut"></i> 1 Orang | Full & Half Body</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="family" src="" alt="Cover Family">
+                <div class="card-header">
+                    <h3>Family Photo</h3>
+                    <p class="desc">Kehangatan potret keluarga dalam bingkai studio yang nyaman.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>FAMILY GOLD</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-palette"></i> 2 Pilihan Tema | Unlimited Photo</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R | All Digital</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>FAMILY SILVER</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-palette"></i> 1 Tema | Unlimited Photo</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R | All Digital</li>
+                            </ul>
+                        </div>
+                        <div class="extra-charge-box"><i class="fas fa-plus"></i> Extra Person Rp 25.000</div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/family/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/family/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="badge-popular">Best Seller 🔥</div>
+                <img class="card-cover" data-kategori="graduation" src="" alt="Cover Graduation">
+                <div class="card-header">
+                    <h3>Graduation</h3>
+                    <p class="desc">Rayakan kelulusan dengan pilihan paket indoor maupun outdoor kampus.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="sub-category-title">INDOOR STUDIO</div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GRAD GOLD</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-10 Person</li>
+                                <li><i class="fas fa-palette"></i> 3 Tema | Semua File Hasil Edit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GRAD SILVER</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-5 Person</li>
+                                <li><i class="fas fa-palette"></i> 1 Tema | Semua File Hasil Edit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="sub-category-title">OUTDOOR CAMPUS</div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GRAD OUTDOOR GOLD</h4><span class="price">Rp 750.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Durasi 1 Jam | 2 Wisudawan</li>
+                                <li><i class="fas fa-map-marked-alt"></i> Spot Bebas Sekitar Kampus | Semua File Edit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio1/graduation/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/graduation/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio1/graduation/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="maternity" src="" alt="Cover Maternity">
+                <div class="card-header">
+                    <h3>Maternity</h3>
+                    <p class="desc">Kenang masa kehamilan yang indah dalam balutan potret yang berkesan.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>MATERNITY GOLD</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 40 Menit | Potret Personal</li>
+                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema | Unlimited Photo</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R | All Digital</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>MATERNITY SILVER</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 20 Menit | 1 Tema Pilihan</li>
+                                <li><i class="fas fa-compact-disc"></i> Unlimited Photo | 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="group" src="" alt="Cover Group">
+                <div class="card-header">
+                    <h3>Group Photo</h3>
+                    <p class="desc">Sesi foto seru untuk geng sahabat atau rekan kerja kapasitas besar.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GROUP GOLD</h4><span class="price">Rp 700.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 40 Menit | 1-10 Person</li>
+                                <li><i class="fas fa-palette"></i> 2 Tema Pilihan | Copy All Digital</li>
+                                <li><i class="fas fa-print"></i> Free 10 Lembar Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GROUP OUTDOOR</h4><span class="price">Rp 950.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 1 Jam Luar Ruangan | 1-15 Person</li>
+                                <li><i class="fas fa-camera-retro"></i> Unlimited Photo | Copy All Digital</li>
+                                <li><i class="fas fa-print"></i> Free 15 Lembar Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="extra-charge-box"><i class="fas fa-plus"></i> Extra Person Rp 25K | Extra Tema Rp 100K</div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="birthday" src="" alt="Cover Birthday">
+                <div class="card-header">
+                    <h3>Birthday Photo</h3>
+                    <p class="desc">Dokumentasikan perayaan hari lahir dengan meriah dan penuh warna.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>BIRTHDAY GOLD</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 30 Menit | 1-10 Person</li>
+                                <li><i class="fas fa-palette"></i> 2 Kustom Tema | Copy All Digital</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>BIRTHDAY SILVER</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 20 Menit | Maksimal 3 Person</li>
+                                <li><i class="fas fa-cookie-bite"></i> 1 Tema Pilihan | 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tnc-section">
+            <h3><i class="fas fa-info-circle"></i> Syarat & Ketentuan Umum (Studio 1)</h3>
+            <ul class="tnc-list">
+                <li><i class="fas fa-check"></i> Down Payment (DP) 50% (Batal/Cancel = No Refund).</li>
+                <li><i class="fas fa-check"></i> Payment Settlement (Pelunasan) maksimal H-7.</li>
+                <li><i class="fas fa-check"></i> Akomodasi tidak termasuk (Accommodation are Not Include).</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="price-section" id="content-studio2" style="display: none;">
+        <h2 class="category-main-title"><i class="fas fa-camera"></i> SELF PHOTO STUDIO</h2>
+        <div class="price-grid">
+            
+            <div class="price-card">
+                <div class="badge-popular">Best Seller 🔥</div>
+                <img class="card-cover" data-kategori="selfphoto" src="" alt="Cover Self Photo">
+                <div class="card-header">
+                    <h3>1. Self Photo Studio</h3>
+                    <p class="desc">Sesi seru bareng bestie atau squad di Cabang Pabelan. Lengkap dengan berbagai properti.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="promo-box"><i class="fas fa-star"></i> Promo Spesial Cabang: *Syarat Wajib Follow IG</div>
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SOLO</h4><span class="price">Rp 45.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 10 menit</li>
+                                <li><i class="fas fa-user"></i> 1 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 10 File Digital (Follow IG)</li>
+                                <li><i class="fas fa-print"></i> 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>BESTIE</h4><span class="price">Rp 85.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-users"></i> 2 Orang</li>
+                                <li><i class="fas fa-file-image"></i> 20 File Digital (Follow IG)</li>
+                                <li><i class="fas fa-print"></i> 1 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SQUAD</h4><span class="price-old">Rp 130.000</span><span class="price">Rp 100.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 15 menit</li>
+                                <li><i class="fas fa-user-friends"></i> Kapasitas s.d 7 Orang</li>
+                                <li><i class="fas fa-cloud-download-alt"></i> Semua File Digital (FREE)</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Cabang 2</div>
+                        <div class="pack-preview-grid">
+                            <img src="koleksi_foto/studio2/selfphoto/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio2/selfphoto/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="koleksi_foto/studio2/selfphoto/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="card-header" style="padding-top: 40px;">
+                    <h3>2. Layanan Tambahan (Additional)</h3>
+                    <p class="desc">Kustomisasi opsional untuk menyempurnakan sesi cetak dan waktu Anda.</p>
+                    <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <ul class="pack-list-detail extra-list-style">
+                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>Extra Person / Pet</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>Extra Background</span> <span class="price">Rp 15.000</span></li>
+                            <li><span>Extra Print Foto 4R</span> <span class="price">Rp 15.000</span></li>
+                        </ul>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="category-main-title" style="margin-top: 80px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
+        <div class="price-grid">
+            
+            <div class="price-card">
+                <div class="badge-popular rec">Recommended ✨</div>
+                <img class="card-cover" data-kategori="prewedding" src="" alt="Cover Prewedding">
+                <div class="card-header">
+                    <h3>Prewedding</h3>
+                    <p class="desc">Dokumentasikan kisah cinta Anda dengan konsep indoor & outdoor elegan.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item highlight-pack">
+                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price highlight-price">Rp 950.000</span></div>
+                            <ul class="pack-list-detail">
+                                <li><i class="fas fa-clock"></i> 60 Menit Sesi Foto</li>
+                                <li><i class="fas fa-user-tie"></i> 1 Profesional Fotografer + Kru</li>
+                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (Indoor & Outdoor)</li>
+                                <li><i class="fas fa-compact-disc"></i> Semua File Digital (Master)</li>
+                                <li><i class="fas fa-print"></i> 4 Lembar Cetak 4R & 2 Lembar 10R</li>
+                            </ul>
+                        </div>
+                        <div class="extra-charge-box"><i class="fas fa-plus"></i> <span>Extra MUA & Fitting:</span> Rp 1.500.000</div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="passphoto" src="" alt="Cover Pas Photo">
+                <div class="card-header">
+                    <h3>Pas Photo & Personal Photo</h3>
+                    <p class="desc">Kebutuhan foto formal, profil profesional, maupun personal potret.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>PAS PHOTO</h4><span class="price">Rp 35.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-user"></i> 1 Orang | Fotografer</li>
+                                <li><i class="fas fa-id-card"></i> Half Body Ringkas</li>
+                                <li><i class="fas fa-layer-group"></i> Termasuk File Digital & Cetak Fisik</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>PERSONAL PHOTO</h4><span class="price-old">Rp 125.000</span><span class="price">Rp 100.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-user-tie"></i> 1 Orang | Fotografer</li>
+                                <li><i class="fas fa-arrows-alt-v"></i> Full Body Premium Portrait</li>
+                                <li><i class="fas fa-gift"></i> BONUS: Free Pas Foto, File Digital & Cetak</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="family" src="" alt="Cover Family">
+                <div class="card-header">
+                    <h3>Family Photo</h3>
+                    <p class="desc">Abadikan kehangatan berharga bersama keluarga besar tercinta.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="badge-popular">Best Seller 🔥</div>
+                <img class="card-cover" data-kategori="graduation" src="" alt="Cover Graduation">
+                <div class="card-header">
+                    <h3>Graduation Photo</h3>
+                    <p class="desc">Simpan pencapaian kelulusan akademik terbaik dalam hidup Anda.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="maternity" src="" alt="Cover Maternity">
+                <div class="card-header">
+                    <h3>Maternity Photo</h3>
+                    <p class="desc">Simpan kenangan indah saat masa-masa menanti buah hati.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="group" src="" alt="Cover Group">
+                <div class="card-header">
+                    <h3>Group Photo</h3>
+                    <p class="desc">Keseruan formasi geng squad sahabat di depan lensa profesional.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <img class="card-cover" data-kategori="birthday" src="" alt="Cover Birthday">
+                <div class="card-header">
+                    <h3>Birthday Photo</h3>
+                    <p class="desc">Jadikan perayaan hari pertambahan usia Anda terdokumentasi sempurna.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <div class="pack-item">
+                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
+                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
+                            </ul>
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="card-header" style="padding-top: 40px;">
+                    <h3>Additional (Photo Studio)</h3>
+                    <p class="desc">Layanan tambahan kustomisasi sesi Studio Profesional Cabang Pabelan.</p>
+                    <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-details-wrapper">
+                    <div class="packages">
+                        <ul class="pack-list-detail extra-list-style">
+                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 25.000</span></li>
+                            <li><span>Extra Person / Pet</span> <span class="price">Rp 25.000</span></li>
+                            <li><span>Extra Background</span> <span class="price">Rp 100.000</span></li>
+                            <li><span>Extra Print Foto 4R</span> <span class="price">Rp 10.000</span></li>
+                        </ul>
+                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tnc-section">
+            <h3><i class="fas fa-info-circle"></i> Syarat & Ketentuan Umum (Studio 2)</h3>
+            <ul class="tnc-list">
+                <li><i class="fas fa-check"></i> Down Payment (DP) 50% (Batal/Cancel = No Refund).</li>
+                <li><i class="fas fa-check"></i> Ketentuan jumlah orang dan durasi berlaku tegas sesuai paket.</li>
+                <li><i class="fas fa-check"></i> Wajib mematuhi jadwal kedatangan agar sesi tidak terpotong.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="kontak" class="footer">
+        <div class="footer-top">
+            <h2>Lensa Story Studio</h2>
+            <p class="slogan">"Capture Moment, Creating Memories"</p>
+            <div class="socials-center">
+                <a href="https://instagram.com/lensastorystudio.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/lensastorypabelan.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@lensastorystudio.id" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Utama</div>
+                <h4>Studio 1 (Grogol)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span>Open Daily: 09.00 - 21.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2389-2500</span></li>
+                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorystudio.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Arjuna+No.48,+Dukuh,+Kec.+Sidomukti,+Salatiga+50722" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
+            </div>
+
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Cabang</div>
+                <h4>Studio 2 (Pabelan)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span>Open Daily: 12.00 - 20.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2519-9415</span></li>
+                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorypabelan.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=PG38%2BQFC,+Jl.+Kenanga,+Kauman+Kidul,+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lensa Story Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const dataJumlahFoto = {
+            "studio1": { "selfphoto": 12, "creativebox": 8, "creativeselfie": 5, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 },
+            "studio2": { "selfphoto": 12, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 } 
+        };
+
+        let studioTerpilih = "studio1";
+
+        function muatCoverGambar(studio) {
+            const containerAktif = studio === 'studio1' ? '#content-studio1' : '#content-studio2';
+            document.querySelectorAll(`${containerAktif} .card-cover`).forEach(img => {
+                const kategori = img.getAttribute('data-kategori');
+                const listFotoStudio = dataJumlahFoto[studio];
+                
+                if (listFotoStudio && listFotoStudio[kategori]) {
+                    const acakAngka = Math.floor(Math.random() * listFotoStudio[kategori]) + 1;
+                    img.src = `koleksi_foto/${studio}/${kategori}/(${acakAngka}).jpg`;
+                } else {
+                    img.src = 'https://via.placeholder.com/400x220?text=Lensa+Story+Studio';
+                }
+            });
+        }
+
+        function gantiStudioLayanan(studio) {
+            studioTerpilih = studio;
+            document.getElementById('btn-studio1').classList.toggle('active', studio === 'studio1');
+            document.getElementById('btn-studio2').classList.toggle('active', studio === 'studio2');
+            document.getElementById('content-studio1').style.display = studio === 'studio1' ? 'block' : 'none';
+            document.getElementById('content-studio2').style.display = studio === 'studio2' ? 'block' : 'none';
+            muatCoverGambar(studio);
+        }
+
+        document.querySelectorAll('.btn-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.price-card');
+                const wrapper = card.querySelector('.card-details-wrapper');
+                const icon = this.querySelector('i');
+
+                if (wrapper.style.maxHeight) {
+                    wrapper.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                    this.innerHTML = 'Lihat Detail Paket <i class="fas fa-chevron-down"></i>';
+                } else {
+                    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                    this.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
+                }
+            });
+        });
+
+        muatCoverGambar("studio1");
+    </script>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            // Membuka atau menutup sidebar menu
+            navLinks.classList.toggle('active');
+            
+            // Mengganti ikon garis tiga (bars) menjadi silang (times)
+            const icon = mobileMenu.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

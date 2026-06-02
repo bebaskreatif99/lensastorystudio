@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Lensa Story Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Lensa Story Studio" class="img-logo">
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan Studio</a></li>
+            <li><a href="event.html">Event & Party</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Portofolio <span>& Galeri</span></h1>
+        <p>Lihat hasil jepretan terbaik dari berbagai layanan kami.</p>
+    </div>
+
+    <section class="gallery-section">
+
+        <div class="studio-selector" id="studio-selector-container">
+            <button id="btn-studio1" class="btn-studio active" onclick="gantiStudio('studio1')"><i class="fas fa-store"></i> Studio 1 (Grogol)</button>
+            <button id="btn-studio2" class="btn-studio" onclick="gantiStudio('studio2')"><i class="fas fa-store"></i> Studio 2 (Pabelan)</button>
+        </div>
+        
+        <div id="album-view" class="album-grid">
+            </div>
+
+        <div id="photo-view" class="photo-view-container" style="display: none;">
+            <button class="btn-back" onclick="kembaliKeAlbum()"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Layanan</button>
+            <h2 id="judul-album" class="category-main-title" style="margin-top: 30px;">Nama Layanan</h2>
+            
+            <div id="masonry-container" class="masonry-grid">
+                </div>
+        </div>
+
+    </section>
+
+    <footer id="kontak" class="footer">
+        <div class="footer-top">
+            <h2>Lensa Story Studio</h2>
+            <p class="slogan">"Capture Moment, Creating Memories"</p>
+            <div class="socials-center">
+                <a href="https://instagram.com/lensastorystudio.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/lensastorypabelan.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@lensastorystudio.id" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Utama</div>
+                <h4>Studio 1 (Grogol)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span><strong>Open Daily:</strong> 09.00 - 21.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span><strong>WhatsApp:</strong> +62 857-2389-2500</span></li>
+                    <li><i class="fab fa-instagram"></i> <span><strong>Instagram:</strong> @lensastorystudio.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Arjuna+No.48,+Dukuh,+Kec.+Sidomukti,+Salatiga+50722" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
+            </div>
+
+            <div class="footer-col studio-box">
+                <div class="studio-badge">Cabang</div>
+                <h4>Studio 2 (Pabelan)</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-clock"></i> <span><strong>Open Daily:</strong> 12.00 - 20.00 WIB</span></li>
+                    <li><i class="fab fa-whatsapp"></i> <span><strong>WhatsApp:</strong> +62 857-2519-9415</span></li>
+                    <li><i class="fab fa-instagram"></i> <span><strong>Instagram:</strong> @lensastorypabelan.id</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=PG38%2BQFC,+Jl.+Kenanga,+Kauman+Kidul,+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lensa Story Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DAFTAR ALBUM & JUMLAH FOTO DIPISAH PER STUDIO
+        const galleryData = {
+            "studio1": {
+                "selfphoto": { judul: "Self Photo Studio", jumlah_foto: 50 }, 
+                "creativebox": { judul: "Creative Box", jumlah_foto: 50 },    
+                "creativeselfie": { judul: "Creative Selfie", jumlah_foto: 50 },
+                "prewedding": { judul: "Prewedding", jumlah_foto: 50 },
+                "family": { judul: "Family Photo", jumlah_foto: 50 },
+                "graduation": { judul: "Graduation", jumlah_foto: 50 },
+                "maternity": { judul: "Maternity", jumlah_foto: 50 },
+                "group": { judul: "Group Photo", jumlah_foto: 50 },
+                "birthday": { judul: "Birthday Photo", jumlah_foto: 50 }
+            },
+            "studio2": {
+                // Silakan sesuaikan jenis album & jumlah fotonya untuk Studio 2
+                "selfphoto": { judul: "Self Photo Studio", jumlah_foto: 39 }, 
+                "maternity": { judul: "maternity Photo ", jumlah_foto: 9 },    
+                "family": { judul: "Family Photo", jumlah_foto: 15 },
+                "graduation": { judul: "Graduation", jumlah_foto: 19 },
+                "group": { judul: "group", jumlah_foto: 10 }
+            }
+        };
+
+        const albumView = document.getElementById('album-view');
+        const photoView = document.getElementById('photo-view');
+        const masonryContainer = document.getElementById('masonry-container');
+        const judulAlbum = document.getElementById('judul-album');
+        const studioSelector = document.getElementById('studio-selector-container');
+
+        let studioAktif = "studio1";
+
+        // Fungsi Membuat Daftar Album Berdasarkan Studio yang Dipilih
+        function renderDaftarAlbum(studio) {
+            albumView.innerHTML = ''; // Reset tampilan album
+            const dataAlbum = galleryData[studio];
+
+            for (const [kategori, data] of Object.entries(dataAlbum)) {
+                const randomAngka = Math.floor(Math.random() * data.jumlah_foto) + 1;
+                
+                // Path gambar diarahkan ke sub-folder studio masing-masing
+                const coverImage = `koleksi_foto/${studio}/${kategori}/(${randomAngka}).jpg`;
+
+                const albumCard = document.createElement('div');
+                albumCard.className = 'album-card';
+                albumCard.innerHTML = `
+                    <img src="${coverImage}" alt="${data.judul}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Foto+Belum+Ada'">
+                    <div class="album-info">
+                        <h3>${data.judul}</h3>
+                        <p>${data.jumlah_foto} Foto</p>
+                    </div>
+                `;
+                albumCard.onclick = () => bukaAlbum(studio, kategori, data);
+                albumView.appendChild(albumCard);
+            }
+        }
+
+        // Fungsi Buka Album (Acak Foto & Render)
+        function bukaAlbum(studio, kategori, data) {
+            albumView.style.display = 'none';
+            studioSelector.style.display = 'none'; // Sembunyikan pilihan studio saat melihat foto
+            photoView.style.display = 'block';
+            
+            const infoStudio = studio === 'studio1' ? 'Studio 1 (Grogol)' : 'Studio 2 (Pabelan)';
+            judulAlbum.innerHTML = `${data.judul} <br><span style="font-size: 1.1rem; font-weight: 500; color: #666;">${infoStudio}</span>`;
+            masonryContainer.innerHTML = '';
+
+            let urutanFoto = [];
+            for (let i = 1; i <= data.jumlah_foto; i++) {
+                urutanFoto.push(i);
+            }
+
+            urutanFoto.sort(() => Math.random() - 0.5);
+
+            urutanFoto.forEach(angka => {
+                const img = document.createElement('img');
+                img.className = 'masonry-item';
+                img.loading = 'lazy'; // Pemuatan gambar hemat data (Lazy load)
+                img.src = `koleksi_foto/${studio}/${kategori}/(${angka}).jpg`; 
+                img.onerror = function() { this.style.display = 'none'; };
+                
+                masonryContainer.appendChild(img);
+            });
+            window.scrollTo(0, 0); 
+        }
+
+        // Fungsi Kembali ke Daftar Layanan
+        function kembaliKeAlbum() {
+            photoView.style.display = 'none';
+            albumView.style.display = 'grid'; 
+            studioSelector.style.display = 'flex'; // Tampilkan kembali pilihan studio
+        }
+
+        // Fungsi untuk Switch/Ganti Pilihan Studio
+        function gantiStudio(studio) {
+            studioAktif = studio;
+            document.getElementById('btn-studio1').classList.toggle('active', studio === 'studio1');
+            document.getElementById('btn-studio2').classList.toggle('active', studio === 'studio2');
+            renderDaftarAlbum(studio);
+        }
+
+        // Load pertama kali saat halaman dibuka (Default Studio 1)
+        renderDaftarAlbum("studio1");
+    </script>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            // Membuka atau menutup sidebar menu
+            navLinks.classList.toggle('active');
+            
+            // Mengganti ikon garis tiga (bars) menjadi silang (times)
+            const icon = mobileMenu.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
