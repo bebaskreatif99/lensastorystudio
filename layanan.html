@@ -9,23 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* =========================================
+           UI/UX LAYANAN - DESAIN COMPACT & CLEAN
+           ========================================= */
+        body { background-color: var(--form-bg, #f8fafc); }
+
+        .page-header {
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--bg-surface) 0%, #fff 100%);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        /* Quick Access (Pintasan) */
         .quick-access-wrapper {
-            padding: 0 20px;
+            padding: 0 5%;
             margin-bottom: 40px;
         }
         .quick-access-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            max-width: 1000px;
+            gap: 10px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         .btn-quick {
             background-color: #fff;
-            color: #555;
-            border: 1px solid #ddd;
-            padding: 8px 18px;
+            color: var(--text-main, #475569);
+            border: 1px solid var(--border-color, #cbd5e1);
+            padding: 8px 16px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -33,25 +46,178 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-family: 'Poppins', sans-serif;
+            gap: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
         .btn-quick:hover {
-            background-color: #00433f;
+            background-color: var(--primary, #0f766e);
             color: #fff;
-            border-color: #00433f;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 67, 63, 0.2);
+            border-color: var(--primary, #0f766e);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(15, 118, 110, 0.2);
         }
-        .btn-quick i {
-            font-size: 0.95rem;
-            color: inherit;
+
+        /* Grid Layout (Lebih Rapat & Proporsional) */
+        .price-section {
+            padding: 0 5% 80px;
+            max-width: 1300px;
+            margin: 0 auto;
         }
-        /* Efek nyala saat digeser oleh shortcut */
-        .highlight-card-effect {
-            border-color: #00433f !important;
-            box-shadow: 0 0 0 4px rgba(0, 67, 63, 0.15) !important;
+        .category-main-title {
+            font-size: 1.5rem;
+            color: var(--text-dark, #1e293b);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary, #0f766e);
+            display: inline-block;
+        }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        /* Card Design (Kecil, Rapi, Elegan) */
+        .price-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .price-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 67, 63, 0.08);
             transform: translateY(-5px);
+        }
+        .card-cover {
+            width: 100%;
+            height: 180px; /* Diperkecil agar tidak memenuhi layar */
+            object-fit: cover;
+            border-bottom: 3px solid var(--accent, #C5A880);
+        }
+        .badge-popular {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: #ef4444; color: #fff;
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 600;
+            z-index: 2; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+        }
+        .badge-popular.rec { background: var(--accent, #C5A880); }
+
+        .card-header {
+            padding: 20px;
+            background: #fff;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark, #1e293b);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .card-header .desc {
+            font-size: 0.85rem;
+            color: var(--text-muted, #64748b);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .btn-toggle {
+            width: 100%;
+            padding: 10px;
+            background: var(--form-bg, #f1f5f9);
+            color: var(--primary, #0f766e);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .btn-toggle:hover {
+            background: var(--primary-light, #e0f2fe);
+            border-color: var(--primary, #0f766e);
+        }
+
+        /* Card Details (Accordion) */
+        .card-details-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #fafafa;
+        }
+        .packages { padding: 0 20px 20px; }
+        
+        .promo-box {
+            background: #fef3c7; color: #d97706;
+            padding: 10px; font-size: 0.8rem; font-weight: 600;
+            border-radius: 6px; text-align: center; margin: 15px 20px 5px;
+        }
+
+        .pack-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+        }
+        .highlight-pack { border: 2px solid var(--primary); background: #f8fafc; }
+        
+        .pack-name-price {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 10px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;
+        }
+        .pack-name-price h4 { font-size: 0.95rem; color: #334155; font-weight: 700; }
+        .pack-name-price .price { font-size: 1.05rem; font-weight: 700; color: var(--primary); }
+        .pack-name-price .price-old { font-size: 0.8rem; text-decoration: line-through; color: #94a3b8; margin-right: 5px; }
+
+        .pack-list-mini { list-style: none; padding: 0; }
+        .pack-list-mini li {
+            font-size: 0.8rem; color: #64748b; margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px;
+        }
+        .pack-list-mini li i { color: var(--accent); margin-top: 3px; font-size: 0.75rem; width: 14px; text-align: center; }
+
+        /* Preview Thumbnail */
+        .pack-preview-title { font-size: 0.8rem; font-weight: 600; color: #475569; margin: 20px 0 10px; display: flex; align-items: center; gap: 5px; }
+        .pack-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+        .pack-preview-grid img { width: 100%; height: 70px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; }
+
+        /* Booking Button */
+        .btn-book-pack {
+            display: block; width: 100%; text-align: center;
+            background: var(--wa-color, #25D366); color: #fff;
+            padding: 12px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            transition: 0.3s; margin-top: 15px; text-decoration: none;
+        }
+        .btn-book-pack:hover { background: #1ebc59; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+
+        .highlight-card-effect {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15) !important;
+        }
+
+        /* Responsif Mobile */
+        @media (max-width: 768px) {
+            .quick-access-container { 
+                flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; 
+                padding-bottom: 10px; scroll-behavior: smooth;
+            }
+            .quick-access-container::-webkit-scrollbar { height: 4px; }
+            .quick-access-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+            .btn-quick { flex-shrink: 0; white-space: nowrap; }
+            .price-grid { grid-template-columns: 1fr; gap: 20px; }
+            .card-cover { height: 160px; }
         }
     </style>
 </head>
@@ -72,19 +238,19 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
-            <li><a href="wedding.html">Wedding</a></li> <!-- MENU BARU -->
+            <li><a href="wedding.html">Wedding</a></li>
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
         </ul>
     </nav>
 
-    <div class="page-header">
-        <h1>Katalog Layanan <span>& Harga</span></h1>
-        <p>Pilih paket terbaik untuk mengabadikan momen berhargamu.</p>
+    <div class="page-header" style="text-align: center;">
+        <h1 style="font-size: 2.2rem; color: var(--text-dark); font-weight: 700; margin-bottom: 10px;">Katalog Layanan <span>& Harga</span></h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">Pilih paket terbaik untuk mengabadikan momen berhargamu.</p>
     </div>
 
-    <div class="studio-selector" id="studio-selector-container" style="margin-top: 40px; margin-bottom: 25px;">
+    <div class="studio-selector" id="studio-selector-container" style="margin-bottom: 25px;">
         <button id="btn-studio1" class="btn-studio active" onclick="gantiStudioLayanan('studio1')"><i class="fas fa-store"></i> Studio 1 (Grogol)</button>
         <button id="btn-studio2" class="btn-studio" onclick="gantiStudioLayanan('studio2')"><i class="fas fa-store"></i> Studio 2 (Pabelan)</button>
     </div>
@@ -148,11 +314,11 @@
                         </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/selfphoto/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/selfphoto/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/selfphoto/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -196,11 +362,11 @@
                         </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/creativebox/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/creativebox/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/creativebox/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -213,48 +379,50 @@
                     <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="card-details-wrapper">
-                    <div class="packages single-package-mt">
+                    <div class="packages">
                         <div class="pack-item highlight-pack">
                             <div class="pack-name-price"><h4>ALL IN PACKAGE</h4><span class="price highlight-price">Rp 200.000</span></div>
-                            <ul class="pack-list-detail">
-                                <li><i class="fas fa-check-circle"></i> Sesi 25 menit | 1-3 Orang</li>
-                                <li><i class="fas fa-check-circle"></i> Semua File Digital & 3 Cetak 4R</li>
-                                <li><i class="fas fa-check-circle"></i> Didampingi 1 Crew Assistance</li>
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-clock"></i> Sesi 25 menit | 1-3 Orang</li>
+                                <li><i class="fas fa-file-image"></i> Semua File Digital & 3 Cetak 4R</li>
+                                <li><i class="fas fa-user-tie"></i> Didampingi 1 Crew Assistance</li>
                             </ul>
                         </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/creativeselfie/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/creativeselfie/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/creativeselfie/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
-
-            <div class="price-card">
-                <div class="card-header" style="padding-top: 40px;">
-                    <h3>4. Additional (Self Photo)</h3>
+            
+            <div class="price-card" style="justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1;">
+                <div class="card-header" style="background: transparent; align-items: center; text-align: center;">
+                    <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>Additional (Self Photo)</h3>
                     <p class="desc">Layanan tambahan kustomisasi sesi Self Photo Studio Anda.</p>
                     <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper">
+                <div class="card-details-wrapper" style="background: transparent;">
                     <div class="packages">
-                        <ul class="pack-list-detail extra-list-style">
-                            <li><span>SelfPhoto Style</span> <span class="price">Rp 25.000</span></li>
-                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>Extra Person / Pet</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>Extra Background</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>All Digital files</span> <span class="price">Rp 15.000</span></li>
-                        </ul>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                        <div class="pack-item">
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-caret-right"></i> <strong>SelfPhoto Style:</strong> Rp 25.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Time (5 mnt):</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Person/Pet:</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Background:</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>All Digital files:</strong> Rp 15.000</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="category-main-title" style="margin-top: 80px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
+        <h2 class="category-main-title" style="margin-top: 40px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
         <div class="price-grid">
             
             <div class="price-card">
@@ -268,23 +436,25 @@
                 <div class="card-details-wrapper">
                     <div class="packages">
                         <div class="pack-item highlight-pack">
-                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price highlight-price">Rp 950.000</span></div>
-                            <ul class="pack-list-detail">
+                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price">Rp 950.000</span></div>
+                            <ul class="pack-list-mini">
                                 <li><i class="fas fa-clock"></i> 60 Menit Sesi Foto</li>
-                                <li><i class="fas fa-user-tie"></i> 1 Profesional Fotografer + Kru</li>
-                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (Indoor & Outdoor)</li>
+                                <li><i class="fas fa-user-tie"></i> 1 Fotografer + Kru Profesional</li>
+                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (In/Outdoor)</li>
                                 <li><i class="fas fa-compact-disc"></i> Semua File Digital (Master)</li>
-                                <li><i class="fas fa-print"></i> 4 Lembar Cetak 4R & 2 Lembar 10R</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
                             </ul>
                         </div>
-                        <div class="extra-charge-box"><i class="fas fa-plus"></i> <span>Extra MUA & Fitting:</span> Rp 1.500.000</div>
+                        <div class="promo-box" style="background: #f1f5f9; color: #475569; margin-top: 10px;">
+                            <i class="fas fa-plus"></i> Extra MUA & Fitting: Rp 1.500.000
+                        </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/prewedding/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/prewedding/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/prewedding/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -292,34 +462,34 @@
             <div class="price-card">
                 <img class="card-cover" data-kategori="passphoto" src="" alt="Cover Pass Photo">
                 <div class="card-header">
-                    <h3>Pass Photo & Personal</h3>
+                    <h3>Pas Photo & Personal</h3>
                     <p class="desc">Kebutuhan foto resmi dokumen dan potret personal profesional.</p>
                     <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="card-details-wrapper">
                     <div class="packages">
                         <div class="pack-item">
-                            <div class="pack-name-price"><h4>PASS PHOTO</h4><span class="price">Rp 35.000</span></div>
+                            <div class="pack-name-price"><h4>PAS PHOTO</h4><span class="price">Rp 35.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-user"></i> 1 Orang | Fotografer</li>
-                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                                <li><i class="fas fa-user"></i> 1 Orang | Termasuk Fotografer</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital File</li>
                             </ul>
                         </div>
                         <div class="pack-item">
-                            <div class="pack-name-price"><h4>PASS PHOTO COUPLE</h4><span class="price">Rp 50.000</span></div>
+                            <div class="pack-name-price"><h4>PAS PHOTO COUPLE</h4><span class="price">Rp 50.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-users"></i> 2 Orang | Fotografer</li>
-                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                                <li><i class="fas fa-users"></i> 2 Orang | Termasuk Fotografer</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital File</li>
                             </ul>
                         </div>
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>PERSONAL PHOTO</h4><span class="price">Rp 100.000</span></div>
                             <ul class="pack-list-mini">
                                 <li><i class="fas fa-user-astronaut"></i> 1 Orang | Full & Half Body</li>
-                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital</li>
+                                <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital File</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -349,13 +519,16 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R | All Digital</li>
                             </ul>
                         </div>
-                        <div class="extra-charge-box"><i class="fas fa-plus"></i> Extra Person Rp 25.000</div>
+                        <div class="promo-box" style="background: #f1f5f9; color: #475569; margin-top: 10px;">
+                            <i class="fas fa-info-circle"></i> Extra Person: Rp 25.000/orang
+                        </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/family/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/family/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -370,11 +543,11 @@
                 </div>
                 <div class="card-details-wrapper">
                     <div class="packages">
-                        <div class="sub-category-title">INDOOR STUDIO</div>
-                        <div class="pack-item">
+                        <p style="font-size: 0.8rem; font-weight: 700; color: var(--primary); margin: 10px 0 5px;">INDOOR STUDIO</p>
+                        <div class="pack-item" style="margin-top: 0;">
                             <div class="pack-name-price"><h4>GRAD GOLD</h4><span class="price">Rp 500.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-10 Person</li>
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-10 Orang</li>
                                 <li><i class="fas fa-palette"></i> 3 Tema | Semua File Hasil Edit</li>
                                 <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
                             </ul>
@@ -382,27 +555,28 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>GRAD SILVER</h4><span class="price">Rp 350.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-5 Person</li>
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-5 Orang</li>
                                 <li><i class="fas fa-palette"></i> 1 Tema | Semua File Hasil Edit</li>
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <div class="sub-category-title">OUTDOOR CAMPUS</div>
-                        <div class="pack-item">
-                            <div class="pack-name-price"><h4>GRAD OUTDOOR GOLD</h4><span class="price">Rp 750.000</span></div>
+                        
+                        <p style="font-size: 0.8rem; font-weight: 700; color: var(--primary); margin: 15px 0 5px;">OUTDOOR CAMPUS</p>
+                        <div class="pack-item" style="margin-top: 0;">
+                            <div class="pack-name-price"><h4>OUTDOOR GOLD</h4><span class="price">Rp 750.000</span></div>
                             <ul class="pack-list-mini">
                                 <li><i class="fas fa-clock"></i> Durasi 1 Jam | 2 Wisudawan</li>
-                                <li><i class="fas fa-map-marked-alt"></i> Spot Bebas Sekitar Kampus | Semua File Edit</li>
-                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 2 Cetak 10R</li>
+                                <li><i class="fas fa-map-marked-alt"></i> Spot Bebas Sekitar Kampus</li>
+                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 2 Cetak 10R | All Edit</li>
                             </ul>
                         </div>
                         <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio1/graduation/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/graduation/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio1/graduation/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -431,7 +605,13 @@
                                 <li><i class="fas fa-compact-disc"></i> Unlimited Photo | 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -448,7 +628,7 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>GROUP GOLD</h4><span class="price">Rp 700.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi 40 Menit | 1-10 Person</li>
+                                <li><i class="fas fa-clock"></i> Sesi 40 Menit | 1-10 Orang</li>
                                 <li><i class="fas fa-palette"></i> 2 Tema Pilihan | Copy All Digital</li>
                                 <li><i class="fas fa-print"></i> Free 10 Lembar Cetak 4R</li>
                             </ul>
@@ -456,13 +636,21 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>GROUP OUTDOOR</h4><span class="price">Rp 950.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi 1 Jam Luar Ruangan | 1-15 Person</li>
+                                <li><i class="fas fa-clock"></i> Sesi 1 Jam Luar Ruangan | 1-15 Orang</li>
                                 <li><i class="fas fa-camera-retro"></i> Unlimited Photo | Copy All Digital</li>
                                 <li><i class="fas fa-print"></i> Free 15 Lembar Cetak 4R</li>
                             </ul>
                         </div>
-                        <div class="extra-charge-box"><i class="fas fa-plus"></i> Extra Person Rp 25K | Extra Tema Rp 100K</div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="promo-box" style="background: #f1f5f9; color: #475569; margin-top: 10px;">
+                            <i class="fas fa-info-circle"></i> Extra Person: Rp 25K | Extra Tema: Rp 100K
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -479,7 +667,7 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>BIRTHDAY GOLD</h4><span class="price">Rp 500.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi 30 Menit | 1-10 Person</li>
+                                <li><i class="fas fa-clock"></i> Sesi 30 Menit | 1-10 Orang</li>
                                 <li><i class="fas fa-palette"></i> 2 Kustom Tema | Copy All Digital</li>
                                 <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
                             </ul>
@@ -487,26 +675,22 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>BIRTHDAY SILVER</h4><span class="price">Rp 350.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi 20 Menit | Maksimal 3 Person</li>
+                                <li><i class="fas fa-clock"></i> Sesi 20 Menit | Maksimal 3 Orang</li>
                                 <li><i class="fas fa-cookie-bite"></i> 1 Tema Pilihan | 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="tnc-section">
-            <h3><i class="fas fa-info-circle"></i> Syarat & Ketentuan Umum (Studio 1)</h3>
-            <ul class="tnc-list">
-                <li><i class="fas fa-check"></i> Down Payment (DP) 50% (Batal/Cancel = No Refund).</li>
-                <li><i class="fas fa-check"></i> Payment Settlement (Pelunasan) maksimal H-7.</li>
-                <li><i class="fas fa-check"></i> Akomodasi tidak termasuk (Accommodation are Not Include).</li>
-            </ul>
-        </div>
     </section>
-
 
     <section class="price-section" id="content-studio2" style="display: none;">
         <h2 class="category-main-title"><i class="fas fa-camera"></i> SELF PHOTO STUDIO</h2>
@@ -521,7 +705,7 @@
                     <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
                 <div class="card-details-wrapper">
-                    <div class="promo-box"><i class="fas fa-star"></i> Promo Spesial Cabang: *Syarat Wajib Follow IG</div>
+                    <div class="promo-box"><i class="fas fa-star"></i> Promo Cabang: *Syarat Wajib Follow IG</div>
                     <div class="packages">
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>SOLO</h4><span class="price">Rp 45.000</span></div>
@@ -550,38 +734,40 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R</li>
                             </ul>
                         </div>
-                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Cabang 2</div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Cabang Pabelan</div>
                         <div class="pack-preview-grid">
-                            <img src="koleksi_foto/studio2/selfphoto/(1).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio2/selfphoto/(2).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
-                            <img src="koleksi_foto/studio2/selfphoto/(3).jpg" onerror="this.src='https://via.placeholder.com/150?text=Lensa+Story'">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
 
-            <div class="price-card">
-                <div class="card-header" style="padding-top: 40px;">
-                    <h3>2. Layanan Tambahan (Additional)</h3>
+            <div class="price-card" style="justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1;">
+                <div class="card-header" style="background: transparent; align-items: center; text-align: center;">
+                    <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>Additional Layanan</h3>
                     <p class="desc">Kustomisasi opsional untuk menyempurnakan sesi cetak dan waktu Anda.</p>
                     <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper">
+                <div class="card-details-wrapper" style="background: transparent;">
                     <div class="packages">
-                        <ul class="pack-list-detail extra-list-style">
-                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>Extra Person / Pet</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>Extra Background</span> <span class="price">Rp 15.000</span></li>
-                            <li><span>Extra Print Foto 4R</span> <span class="price">Rp 15.000</span></li>
-                        </ul>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                        <div class="pack-item">
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Time (5 mnt):</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Person/Pet:</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Background:</strong> Rp 15.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Print 4R:</strong> Rp 15.000</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="category-main-title" style="margin-top: 80px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
+        <h2 class="category-main-title" style="margin-top: 40px;"><i class="fas fa-images"></i> PHOTO STUDIO</h2>
         <div class="price-grid">
             
             <div class="price-card">
@@ -595,17 +781,25 @@
                 <div class="card-details-wrapper">
                     <div class="packages">
                         <div class="pack-item highlight-pack">
-                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price highlight-price">Rp 950.000</span></div>
-                            <ul class="pack-list-detail">
+                            <div class="pack-name-price"><h4>PAKET PREWEDDING</h4><span class="price">Rp 950.000</span></div>
+                            <ul class="pack-list-mini">
                                 <li><i class="fas fa-clock"></i> 60 Menit Sesi Foto</li>
-                                <li><i class="fas fa-user-tie"></i> 1 Profesional Fotografer + Kru</li>
-                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (Indoor & Outdoor)</li>
+                                <li><i class="fas fa-user-tie"></i> 1 Fotografer + Kru Profesional</li>
+                                <li><i class="fas fa-palette"></i> 3 Pilihan Tema (In/Outdoor)</li>
                                 <li><i class="fas fa-compact-disc"></i> Semua File Digital (Master)</li>
-                                <li><i class="fas fa-print"></i> 4 Lembar Cetak 4R & 2 Lembar 10R</li>
+                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
                             </ul>
                         </div>
-                        <div class="extra-charge-box"><i class="fas fa-plus"></i> <span>Extra MUA & Fitting:</span> Rp 1.500.000</div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="promo-box" style="background: #f1f5f9; color: #475569; margin-top: 10px;">
+                            <i class="fas fa-plus"></i> Extra MUA & Fitting: Rp 1.500.000
+                        </div>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -622,9 +816,9 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>PAS PHOTO</h4><span class="price">Rp 35.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-user"></i> 1 Orang | Fotografer</li>
+                                <li><i class="fas fa-user"></i> 1 Orang | Termasuk Fotografer</li>
                                 <li><i class="fas fa-id-card"></i> Half Body Ringkas</li>
-                                <li><i class="fas fa-layer-group"></i> Termasuk File Digital & Cetak Fisik</li>
+                                <li><i class="fas fa-layer-group"></i> File Digital & Cetak Fisik</li>
                             </ul>
                         </div>
                         <div class="pack-item">
@@ -632,10 +826,10 @@
                             <ul class="pack-list-mini">
                                 <li><i class="fas fa-user-tie"></i> 1 Orang | Fotografer</li>
                                 <li><i class="fas fa-arrows-alt-v"></i> Full Body Premium Portrait</li>
-                                <li><i class="fas fa-gift"></i> BONUS: Free Pas Foto, File Digital & Cetak</li>
+                                <li><i class="fas fa-gift"></i> BONUS: Free Pas Foto, Digital & Cetak</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -665,7 +859,13 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -696,7 +896,13 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -726,7 +932,13 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -756,7 +968,13 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -786,39 +1004,38 @@
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
                         </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Ini</a>
+                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
+                        <div class="pack-preview-grid">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                            <img src="" class="preview-img" alt="Preview">
+                        </div>
+                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
                     </div>
                 </div>
             </div>
 
-            <div class="price-card">
-                <div class="card-header" style="padding-top: 40px;">
+            <div class="price-card" style="justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1;">
+                <div class="card-header" style="background: transparent; align-items: center; text-align: center;">
+                    <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
                     <h3>Additional (Photo Studio)</h3>
                     <p class="desc">Layanan tambahan kustomisasi sesi Studio Profesional Cabang Pabelan.</p>
                     <button class="btn-toggle">Lihat Detail Tambahan <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper">
+                <div class="card-details-wrapper" style="background: transparent;">
                     <div class="packages">
-                        <ul class="pack-list-detail extra-list-style">
-                            <li><span>Extra Time / 5 menit</span> <span class="price">Rp 25.000</span></li>
-                            <li><span>Extra Person / Pet</span> <span class="price">Rp 25.000</span></li>
-                            <li><span>Extra Background</span> <span class="price">Rp 100.000</span></li>
-                            <li><span>Extra Print Foto 4R</span> <span class="price">Rp 10.000</span></li>
-                        </ul>
-                        <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Tambah Layanan</a>
+                        <div class="pack-item">
+                            <ul class="pack-list-mini">
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Time (5 mnt):</strong> Rp 25.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Person/Pet:</strong> Rp 25.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Background:</strong> Rp 100.000</li>
+                                <li><i class="fas fa-caret-right"></i> <strong>Extra Print 4R:</strong> Rp 10.000</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-
-        <div class="tnc-section">
-            <h3><i class="fas fa-info-circle"></i> Syarat & Ketentuan Umum (Studio 2)</h3>
-            <ul class="tnc-list">
-                <li><i class="fas fa-check"></i> Down Payment (DP) 50% (Batal/Cancel = No Refund).</li>
-                <li><i class="fas fa-check"></i> Ketentuan jumlah orang dan durasi berlaku tegas sesuai paket.</li>
-                <li><i class="fas fa-check"></i> Wajib mematuhi jadwal kedatangan agar sesi tidak terpotong.</li>
-            </ul>
         </div>
     </section>
 
@@ -843,7 +1060,6 @@
                     <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorystudio.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Arjuna+No.48,+Dukuh,+Kec.+Sidomukti,+Salatiga+50722" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
             </div>
 
             <div class="footer-col studio-box">
@@ -855,7 +1071,6 @@
                     <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorypabelan.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=PG38%2BQFC,+Jl.+Kenanga,+Kauman+Kidul,+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -864,30 +1079,113 @@
     </footer>
 
     <script>
-        const dataJumlahFoto = {
-            "studio1": { "selfphoto": 12, "creativebox": 8, "creativeselfie": 5, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 },
-            "studio2": { "selfphoto": 12, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 } 
+        // Database Link ImgBB 
+        const imgbbData = {
+            "studio1": {
+                "birthday": [
+                    "https://i.ibb.co.com/BHHkhS47/1.jpg", "https://i.ibb.co.com/mFgdGHpJ/2.jpg", "https://i.ibb.co.com/dwgXKNsd/3.jpg",
+                    "https://i.ibb.co.com/Pvt1mymW/4.jpg", "https://i.ibb.co.com/Y78x4CXG/5.jpg", "https://i.ibb.co.com/5h0Lz7wX/6.jpg"
+                ],
+                "creativebox": [
+                    "https://i.ibb.co.com/CKm8WfDd/1.jpg", "https://i.ibb.co.com/XrR9QbZ7/2.jpg", "https://i.ibb.co.com/tMKprBxJ/3.jpg",
+                    "https://i.ibb.co.com/FbqPsbRY/4.jpg"
+                ],
+                "creativeselfie": [
+                    "https://i.ibb.co.com/svcvcgNX/1.jpg", "https://i.ibb.co.com/3Y9PrfT3/2.jpg", "https://i.ibb.co.com/Z6Kykycs/3.jpg",
+                    "https://i.ibb.co.com/ccgKkh9j/4.jpg", "https://i.ibb.co.com/hFJ6Gf9K/5.jpg"
+                ],
+                "family": [
+                    "https://i.ibb.co.com/v6XtPTCF/1.jpg", "https://i.ibb.co.com/YTVq0PPL/2.jpg", "https://i.ibb.co.com/JwTzttzt/3.jpg",
+                    "https://i.ibb.co.com/Q3G7sxhC/4.jpg", "https://i.ibb.co.com/hJjvgvTR/5.jpg", "https://i.ibb.co.com/KxXj1GKG/6.jpg"
+                ],
+                "graduation": [
+                    "https://i.ibb.co.com/spXnmVfR/1.jpg", "https://i.ibb.co.com/kT41Bpc/2.jpg", "https://i.ibb.co.com/mrNWvftZ/3.jpg",
+                    "https://i.ibb.co.com/WXK8QVG/4.jpg", "https://i.ibb.co.com/PGYgQZ53/5.jpg", "https://i.ibb.co.com/S4CnN3ds/6.jpg"
+                ],
+                "maternity": [
+                    "https://i.ibb.co.com/Ps5VHhpk/1.jpg", "https://i.ibb.co.com/8gr0X9Zr/2.jpg", "https://i.ibb.co.com/vxvvQHZv/3.jpg",
+                    "https://i.ibb.co.com/QFZwDdpG/4.jpg", "https://i.ibb.co.com/bMHJj3t3/5.jpg"
+                ],
+                "prewedding": [
+                    "https://i.ibb.co.com/rfT9N63s/1.jpg", "https://i.ibb.co.com/Y7xLJNhS/2.jpg", "https://i.ibb.co.com/mVMhhtrD/3.jpg",
+                    "https://i.ibb.co.com/vCSkKyt1/4.jpg", "https://i.ibb.co.com/gHWCzJ6/5.jpg"
+                ],
+                "selfphoto": [
+                    "https://i.ibb.co.com/Xf2ZZ1tn/1.jpg", "https://i.ibb.co.com/MDs5mghZ/2.jpg", "https://i.ibb.co.com/0pwWxs50/3.jpg",
+                    "https://i.ibb.co.com/QzZ1vk7/4.jpg", "https://i.ibb.co.com/xSrS5Tj4/5.jpg", "https://i.ibb.co.com/hJkJrzrV/6.jpg"
+                ],
+                "group": [
+                    "https://i.ibb.co.com/v6XtPTCF/1.jpg", "https://i.ibb.co.com/YTVq0PPL/2.jpg", "https://i.ibb.co.com/JwTzttzt/3.jpg" // Dummy pakai family agar tidak kosong
+                ],
+                "passphoto": [] // Kosongkan agar pakai placeholder
+            },
+            "studio2": {
+                "family": [
+                    "https://i.ibb.co.com/Df9L1BSg/1.jpg", "https://i.ibb.co.com/zhphdydY/2.jpg", "https://i.ibb.co.com/rGDCB532/3.jpg",
+                    "https://i.ibb.co.com/2GshmXq/4.jpg", "https://i.ibb.co.com/yBM85Tyd/5.jpg"
+                ],
+                "graduation": [
+                    "https://i.ibb.co.com/tPM7BJSH/1.jpg", "https://i.ibb.co.com/cBDph8k/2.jpg", "https://i.ibb.co.com/S4J1fSW2/3.jpg",
+                    "https://i.ibb.co.com/KtftRQ2/4.jpg", "https://i.ibb.co.com/V0P1Fz72/5.jpg"
+                ],
+                "group": [
+                    "https://i.ibb.co.com/5gsC8dzF/1.jpg", "https://i.ibb.co.com/GfGxjvr8/2.jpg", "https://i.ibb.co.com/5gkQ6g7b/3.jpg"
+                ],
+                "maternity": [
+                    "https://i.ibb.co.com/qMqT70Nk/1.jpg", "https://i.ibb.co.com/67CMc6P8/2.jpg", "https://i.ibb.co.com/Y4QrFcF6/3.jpg"
+                ],
+                "selfphoto": [
+                    "https://i.ibb.co.com/fdVkx87c/1.jpg", "https://i.ibb.co.com/tpSr6gxW/1.jpg", "https://i.ibb.co.com/CpyRDQYC/2.jpg",
+                    "https://i.ibb.co.com/TMBMpZ75/3.jpg", "https://i.ibb.co.com/JwZQRR2c/4.jpg"
+                ],
+                "prewedding": [
+                    "https://i.ibb.co.com/rfT9N63s/1.jpg", "https://i.ibb.co.com/Y7xLJNhS/2.jpg", "https://i.ibb.co.com/mVMhhtrD/3.jpg"
+                ],
+                "birthday": [
+                    "https://i.ibb.co.com/BHHkhS47/1.jpg", "https://i.ibb.co.com/mFgdGHpJ/2.jpg"
+                ]
+            }
         };
 
         let studioTerpilih = "studio1";
 
-        function muatCoverGambar(studio) {
+        // Fungsi Memuat Gambar dari ImgBB ke Cover dan Preview Secara Acak
+        function muatGambarLayanan(studio) {
             const containerAktif = studio === 'studio1' ? '#content-studio1' : '#content-studio2';
-            document.querySelectorAll(`${containerAktif} .card-cover`).forEach(img => {
-                const kategori = img.getAttribute('data-kategori');
-                const listFotoStudio = dataJumlahFoto[studio];
+            
+            document.querySelectorAll(`${containerAktif} .price-card`).forEach(card => {
+                const coverImg = card.querySelector('.card-cover');
+                if (!coverImg) return; // Skip card yang tidak ada gambar (seperti card additional)
                 
-                if (listFotoStudio && listFotoStudio[kategori]) {
-                    const acakAngka = Math.floor(Math.random() * listFotoStudio[kategori]) + 1;
-                    img.src = `koleksi_foto/${studio}/${kategori}/(${acakAngka}).jpg`;
+                const kategori = coverImg.getAttribute('data-kategori');
+                const listFoto = imgbbData[studio][kategori] || [];
+                
+                if (listFoto.length > 0) {
+                    // Acak array foto agar dinamis setiap refresh
+                    const shuffled = [...listFoto].sort(() => 0.5 - Math.random());
+                    
+                    // Set Cover Depan
+                    coverImg.src = shuffled[0];
+                    
+                    // Set Gambar Pratinjau (Maksimal 3 foto)
+                    const previews = card.querySelectorAll('.preview-img');
+                    previews.forEach((pImg, idx) => {
+                        // Ambil foto index ke 1, 2, 3 (karena index 0 sudah dipakai cover)
+                        const photoIndex = (idx + 1) % shuffled.length; 
+                        pImg.src = shuffled[photoIndex];
+                    });
                 } else {
-                    img.src = 'https://via.placeholder.com/400x220?text=Lensa+Story+Studio';
+                    // Jika data foto tidak ada, gunakan placeholder
+                    coverImg.src = 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+                    card.querySelectorAll('.preview-img').forEach(pImg => {
+                        pImg.style.display = 'none'; // Sembunyikan grid preview jika tidak ada foto
+                    });
                 }
             });
         }
 
         // ===============================================
-        // FUNGSI GANTI STUDIO
+        // FUNGSI GANTI TAB STUDIO
         // ===============================================
         function gantiStudioLayanan(studio) {
             studioTerpilih = studio;
@@ -895,48 +1193,47 @@
             document.getElementById('btn-studio2').classList.toggle('active', studio === 'studio2');
             document.getElementById('content-studio1').style.display = studio === 'studio1' ? 'block' : 'none';
             document.getElementById('content-studio2').style.display = studio === 'studio2' ? 'block' : 'none';
-            muatCoverGambar(studio);
+            
+            // Muat gambar saat tab diganti
+            muatGambarLayanan(studio);
         }
 
         // ===============================================
-        // FUNGSI SCROLL OTOMATIS (QUICK ACCESS)
+        // FUNGSI SCROLL OTOMATIS (QUICK ACCESS PINTASAN)
         // ===============================================
         function scrollToCategory(kategori) {
             let containerAktif = studioTerpilih === 'studio1' ? '#content-studio1' : '#content-studio2';
             let targetImg = document.querySelector(`${containerAktif} .card-cover[data-kategori="${kategori}"]`);
             
-            // Logika Cerdas: Jika kategori tidak ada di studio saat ini (contoh: Creative Box tidak ada di Studio 2),
-            // Sistem akan mencari di studio sebelahnya dan otomatis pindah tab!
+            // Logika cerdas: Jika kategori tidak ada di studio saat ini, otomatis pindah tab studio sebelahnya!
             if (!targetImg) {
                 const studioLain = studioTerpilih === 'studio1' ? 'studio2' : 'studio1';
                 const targetLain = document.querySelector(`#content-${studioLain} .card-cover[data-kategori="${kategori}"]`);
                 
                 if (targetLain) {
-                    // Pindah tab secara otomatis
                     gantiStudioLayanan(studioLain);
                     containerAktif = `#content-${studioLain}`;
                     targetImg = targetLain;
                 } else {
-                    return; // Jika benar-benar tidak ada di kedua studio
+                    return; // Keluar jika data tidak ditemukan di kedua studio
                 }
             }
             
             if (targetImg) {
                 const targetCard = targetImg.closest('.price-card');
                 
-                // Kalkulasi jarak scroll (diberi jarak 120px dari atas agar tidak tertutup navbar)
-                const offset = 120; 
+                // Kalkulasi jarak scroll (diberi jarak agar tidak tertutup header)
+                const offset = 100; 
                 const bodyRect = document.body.getBoundingClientRect().top;
                 const elementRect = targetCard.getBoundingClientRect().top;
-                const elementPosition = elementRect - bodyRect;
-                const offsetPosition = elementPosition - offset;
+                const offsetPosition = (elementRect - bodyRect) - offset;
 
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
 
-                // Otomatis membuka Accordion / Dropdown Detail Paket
+                // Buka Accordion otomatis
                 const wrapper = targetCard.querySelector('.card-details-wrapper');
                 const btnToggle = targetCard.querySelector('.btn-toggle');
                 if (wrapper && btnToggle) {
@@ -948,11 +1245,11 @@
                     }
                 }
 
-                // Berikan animasi menyala sesaat (Highlight)
+                // Berikan animasi highlight (border nyala) sesaat
                 targetCard.classList.add('highlight-card-effect');
                 setTimeout(() => {
                     targetCard.classList.remove('highlight-card-effect');
-                }, 2000); // Highlight hilang setelah 2 detik
+                }, 2000); 
             }
         }
 
@@ -966,10 +1263,12 @@
                 const icon = this.querySelector('i');
 
                 if (wrapper.style.maxHeight) {
+                    // Jika Sedang Terbuka -> Tutup
                     wrapper.style.maxHeight = null;
                     icon.style.transform = 'rotate(0deg)';
                     this.innerHTML = 'Lihat Detail Paket <i class="fas fa-chevron-down"></i>';
                 } else {
+                    // Jika Sedang Tertutup -> Buka
                     wrapper.style.maxHeight = wrapper.scrollHeight + "px";
                     icon.style.transform = 'rotate(180deg)';
                     this.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
@@ -977,10 +1276,12 @@
             });
         });
 
-        muatCoverGambar("studio1");
+        // Jalankan render awal saat halaman dimuat
+        muatGambarLayanan("studio1");
     </script>
 
     <script>
+        // Hamburger Menu Mobile Logic
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
