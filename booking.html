@@ -7,6 +7,196 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variabel Warna & Layout Form */
+        :root {
+            --form-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --primary-color: #0f766e; /* Warna hijau elegan elegan */
+            --primary-light: #f0fdfa;
+            --wa-color: #25D366;
+            --wa-hover: #1ebc59;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+        }
+
+        .booking-section {
+            background-color: var(--form-bg);
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .booking-container {
+            background: var(--card-bg);
+            max-width: 750px;
+            width: 100%;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .booking-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .booking-header h2 span {
+            color: var(--primary-color);
+        }
+
+        .booking-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .form-group label i {
+            color: var(--primary-color);
+            margin-right: 8px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background-color: #fff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+        }
+
+        .form-control:disabled {
+            background-color: #f1f5f9;
+            cursor: not-allowed;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .highlight-group {
+            background: var(--primary-light);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border: 1px solid #ccfbf1;
+            margin-bottom: 30px;
+        }
+
+        .highlight-group label {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .highlight-group .form-control {
+            border-color: #99f6e4;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px dashed var(--border-color);
+            margin: 35px 0;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+
+        .optional {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--wa-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 40px;
+        }
+
+        .btn-submit:hover {
+            background: var(--wa-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Responsif untuk Mobile */
+        @media (max-width: 768px) {
+            .booking-section {
+                padding: 40px 15px;
+            }
+            .booking-container {
+                padding: 30px 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .booking-header h2 {
+                font-size: 1.8rem;
+            }
+            .highlight-group {
+                padding: 20px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +215,7 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
-            <li><a href="wedding.html">Wedding</a></li> <!-- MENU BARU -->
+            <li><a href="wedding.html">Wedding</a></li> 
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
@@ -41,64 +231,66 @@
             
             <form id="bookingForm" class="booking-form">
                 
-                <div class="form-group" style="background: var(--accent-light); padding: 20px; border-radius: var(--radius-sm); border-left: 4px solid var(--primary);">
-                    <label for="studio" style="font-weight: 600; color: var(--primary); margin-bottom: 10px;">
-                        <i class="fas fa-map-marker-alt"></i> 1. Pilih Lokasi / Jenis Layanan <span class="required" style="color: red;">*</span>
-                    </label>
-                    <select id="studio" class="form-control" required onchange="updatePilihanPaket()" style="background-color: #fff; border-color: rgba(0, 67, 63, 0.2); margin-top: 5px;">
-                        <option value="" disabled selected>-- Pilih Studio atau Event --</option>
-                        <option value="grogol">Studio 1 (Grogol - Utama)</option>
-                        <option value="pabelan">Studio 2 (Pabelan - Cabang)</option>
-                        <option value="event">Layanan Event & Outdoor (On-Location)</option>
-                    </select>
+                <div class="highlight-group">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="studio">
+                            <i class="fas fa-map-marker-alt"></i> 1. Pilih Lokasi / Jenis Layanan <span class="required">*</span>
+                        </label>
+                        <select id="studio" class="form-control" required onchange="updatePilihanPaket()">
+                            <option value="" disabled selected>-- Pilih Studio atau Event --</option>
+                            <option value="grogol">Studio 1 (Grogol - Utama)</option>
+                            <option value="pabelan">Studio 2 (Pabelan - Cabang)</option>
+                            <option value="event">Layanan Event & Outdoor (On-Location)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="paket"><i class="fas fa-box-open"></i> 2. Pilih Kategori & Paket <span class="required">*</span></label>
+                        <select id="paket" class="form-control" required disabled>
+                            <option value="" disabled selected>-- Silakan Pilih Lokasi/Layanan di Atas --</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="paket"><i class="fas fa-box-open"></i> 2. Pilih Kategori & Paket <span class="required" style="color: red;">*</span></label>
-                    <select id="paket" class="form-control" required disabled>
-                        <option value="" disabled selected>-- Silakan Pilih Lokasi/Layanan di Atas --</option>
-                    </select>
-                </div>
-
-                <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 30px 0;">
+                <hr class="divider">
 
                 <div class="form-group">
-                    <label for="nama"><i class="fas fa-user"></i> Nama Lengkap / Instansi <span class="required" style="color: red;">*</span></label>
+                    <label for="nama"><i class="fas fa-user"></i> Nama Lengkap / Instansi <span class="required">*</span></label>
                     <input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso / PT. ABC" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="wa"><i class="fab fa-whatsapp"></i> Nomor WhatsApp <span class="required" style="color: red;">*</span></label>
+                    <label for="wa"><i class="fab fa-whatsapp"></i> Nomor WhatsApp <span class="required">*</span></label>
                     <input type="tel" id="wa" class="form-control" placeholder="Contoh: 081234567xxx" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="instagram"><i class="fab fa-instagram"></i> Akun Instagram <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;">(Bisa dikosongkan)</span></label>
+                    <label for="instagram"><i class="fab fa-instagram"></i> Akun Instagram <span class="optional">(Bisa dikosongkan)</span></label>
                     <input type="text" id="instagram" class="form-control" placeholder="Contoh: @budisnt_">
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-6">
-                        <label id="label-tanggal" for="tanggal"><i class="fas fa-calendar-alt"></i> Tanggal Pelaksanaan <span class="required" style="color: red;">*</span></label>
+                    <div class="form-group">
+                        <label id="label-tanggal" for="tanggal"><i class="fas fa-calendar-alt"></i> Tanggal Pelaksanaan <span class="required">*</span></label>
                         <input type="date" id="tanggal" class="form-control" required>
                     </div>
-                    <div class="form-group col-6">
-                        <label id="label-jam" for="jam"><i class="fas fa-clock"></i> Jam / Waktu <span class="required" style="color: red;">*</span></label>
+                    <div class="form-group">
+                        <label id="label-jam" for="jam"><i class="fas fa-clock"></i> Jam / Waktu <span class="required">*</span></label>
                         <input type="time" id="jam" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label id="label-orang" for="jumlah_orang"><i class="fas fa-users"></i> Jumlah Orang <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;"></span> <span class="required" style="color: red;">*</span></label>
+                    <label id="label-orang" for="jumlah_orang"><i class="fas fa-users"></i> Jumlah Orang <span class="required">*</span></label>
                     <input type="text" id="jumlah_orang" class="form-control" placeholder="Contoh: 3 Orang" required>
                 </div>
 
                 <div class="form-group">
-                    <label id="label-tambahan" for="tambahan"><i class="fas fa-comment-alt"></i> Catatan Tambahan <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;">(Opsional)</span></label>
+                    <label id="label-tambahan" for="tambahan"><i class="fas fa-comment-alt"></i> Catatan Tambahan <span class="optional">(Opsional)</span></label>
                     <input type="text" id="tambahan" class="form-control" placeholder="Contoh: Extra Time 5 mnt, dll">
                 </div>
 
-                <button type="submit" class="btn-submit" style="margin-top: 25px;"><i class="fab fa-whatsapp"></i> Konfirmasi Booking via WA</button>
+                <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Konfirmasi Booking via WA</button>
             </form>
         </div>
     </section>
