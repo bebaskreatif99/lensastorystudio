@@ -188,16 +188,19 @@
             box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
         }
         
+        /* KOLASE FOTO WEDDING (LAYOUT BARU YANG LEBIH AMAN) */
         .wedding-index-collage {
             flex: 1.2;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
             gap: 20px;
             position: relative;
             z-index: 2;
         }
         .wedding-index-collage img {
             width: 100%;
+            height: 100%;
             border-radius: 16px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.4);
             object-fit: cover;
@@ -208,9 +211,13 @@
             z-index: 5;
             box-shadow: 0 20px 40px rgba(197, 168, 128, 0.3);
         }
-        .w-img-1 { height: 450px; grid-row: span 2; }
-        .w-img-2 { height: 280px; }
-        .w-img-3 { height: 280px; margin-top: -110px; }
+        .w-img-1 { 
+            grid-row: 1 / span 2; /* Mengambil 2 baris vertikal */
+            height: 450px; 
+        }
+        .w-img-2, .w-img-3 { 
+            height: 215px; /* Setengah dari tinggi w-img-1 dikurangi gap */
+        }
 
         /* --- Premium Testimonial Section --- */
         .testimonial-section { 
@@ -241,55 +248,55 @@
         .author-info p { font-size: 0.8rem; color: var(--text-muted); }
 
         /* =========================================================
-           RESPONSIVE SIZING KHUSUS HP/MOBILE (DIPERBAIKI)
+           RESPONSIVE SIZING KHUSUS HP/MOBILE
            ========================================================= */
         @media (max-width: 992px) {
             .exclusive-wedding-index { flex-direction: column; text-align: center; padding: 60px 5%; }
             .wedding-index-collage { width: 100%; gap: 15px; }
-            .w-img-3 { margin-top: 0; }
         }
 
         @media (max-width: 768px) {
-            /* Slider Karya Terbaik (Dikecilkan) */
+            /* Slider Karya Terbaik */
             .auto-slider-section { padding: 40px 0; }
             .slider-track { gap: 15px; }
-            .slide-img { height: 260px; width: 180px; } /* Ukuran foto slider di HP */
+            .slide-img { height: 260px; width: 180px; } 
 
-            /* Section Layanan / Giant Showcase (Dikecilkan & dirapikan) */
+            /* Giant Showcase (Layanan Visual) */
             .giant-showcase-section { padding: 50px 5%; }
             .giant-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 30px; }
-            .giant-card { height: 320px; } /* Tinggi foto layanan di HP */
+            .giant-card { height: 320px; } 
             .giant-overlay { padding: 20px; }
             .giant-overlay h3 { font-size: 1.4rem; margin-bottom: 5px; }
             .giant-overlay p { font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; }
             .giant-btn { padding: 10px 20px; font-size: 0.85rem; }
 
-            /* Exclusive Wedding Section (Disesuaikan skala HP) */
+            /* Exclusive Wedding Section Text */
             .exclusive-wedding-index { padding: 50px 5%; gap: 30px; }
             .wedding-index-text h2 { font-size: 2.2rem; }
             .wedding-index-text p { font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
             .wedding-index-btn { padding: 12px 25px; font-size: 0.95rem; }
             
-            /* Kolase Foto Wedding di HP */
+            /* KOLASE FOTO WEDDING DI HP (SKALA BARU) */
             .wedding-index-collage { gap: 10px; }
-            .w-img-1 { height: 240px; } 
-            .w-img-2, .w-img-3 { height: 115px; } 
+            .w-img-1 { height: 300px; } 
+            .w-img-2, .w-img-3 { height: 145px; } 
 
             /* Testimonial Section */
             .testimonial-section { padding: 50px 5%; }
             .testi-slider-wrapper { margin-top: 25px; }
             .testi-track { gap: 15px; }
-            .testi-card { width: 280px; padding: 20px; } /* Lebar kartu testi di HP */
+            .testi-card { width: 280px; padding: 20px; } 
             .testi-text { font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
         }
 
-        /* Khusus untuk HP layar sangat kecil (seperti iPhone SE) */
+        /* Khusus HP layar sangat kecil (iPhone SE, dll) */
         @media (max-width: 480px) {
             .slide-img { height: 220px; width: 150px; }
             .giant-card { height: 280px; }
             .wedding-index-text h2 { font-size: 1.8rem; }
-            .w-img-1 { height: 200px; }
-            .w-img-2, .w-img-3 { height: 95px; }
+            /* Kolase Wedding HP Kecil */
+            .w-img-1 { height: 260px; }
+            .w-img-2, .w-img-3 { height: 125px; }
             .testi-card { width: 250px; }
         }
     </style>
@@ -345,12 +352,11 @@
                 <i class="fas fa-gem"></i> Lihat Pricelist Wedding
             </a>
         </div>
+        
         <div class="wedding-index-collage">
-            <div class="wedding-index-collage">
             <img src="https://i.ibb.co.com/20xg7JY6/1.jpg" class="w-img-1" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Moment 1">
             <img src="https://i.ibb.co.com/ytTQ5Cj/2.jpg" class="w-img-2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Moment 2">
             <img src="https://i.ibb.co.com/23KBh0Bx/3.jpg" class="w-img-3" onerror="this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Moment 3">
-        </div>
         </div>
     </section>
 
@@ -634,7 +640,6 @@
         for (const [studio, kategories] of Object.entries(imgbbData)) {
             for (const [kategori, listFoto] of Object.entries(kategories)) {
                 if (listFoto.length > 0) {
-                    // Ambil 1 foto acak dari setiap kategori agar slider bervariasi
                     let acak = Math.floor(Math.random() * listFoto.length);
                     fotoKoleksi.push(listFoto[acak]);
                 }
