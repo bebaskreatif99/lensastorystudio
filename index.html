@@ -7,9 +7,262 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- STYLING PREMIUM UNTUK VISUAL BESAR, TESTIMONI & EXCLUSIVE WEDDING -->
+    <style>
+        /* --- Super Large Auto Slider --- */
+        .auto-slider-section {
+            padding: 80px 0;
+            background-color: var(--bg-surface);
+            overflow: hidden;
+        }
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 30px 0;
+            position: relative;
+        }
+        .slider-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: marquee infinite linear;
+            animation-duration: 40s;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .slide-img {
+            height: 500px; 
+            width: 380px;  
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .slide-img:hover {
+            transform: scale(1.04) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+        }
+
+        /* --- Giant Immersive Showcase --- */
+        .giant-showcase-section {
+            padding: 100px 8%;
+            background-color: var(--bg-main);
+        }
+        .giant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .giant-card {
+            position: relative;
+            height: 650px; 
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        .giant-card:hover {
+            transform: translateY(-10px);
+        }
+        .giant-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .giant-card:hover img {
+            transform: scale(1.08);
+        }
+        .giant-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 67, 63, 0.95) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px;
+            color: #fff;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+        .giant-card:hover .giant-overlay {
+            opacity: 1;
+            background: linear-gradient(to top, rgba(0, 67, 63, 0.98) 0%, rgba(0, 67, 63, 0.4) 100%);
+        }
+        .giant-overlay h3 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .giant-overlay p {
+            font-size: 1.05rem;
+            color: #EAECEE;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+        .giant-btn {
+            align-self: flex-start;
+            background-color: #fff;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .giant-card:hover .giant-btn {
+            background-color: var(--accent);
+            color: var(--text-dark);
+        }
+
+        /* --- EXCLUSIVE WEDDING SECTION (BARU) --- */
+        .exclusive-wedding-index {
+            padding: 100px 8%;
+            background: linear-gradient(135deg, #002d2a 0%, #111 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        /* Motif Elegan di Background */
+        .exclusive-wedding-index::before {
+            content: '';
+            position: absolute;
+            top: -20%; right: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(197, 168, 128, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .wedding-index-text {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+            z-index: 2;
+        }
+        .wedding-index-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .wedding-index-text h2 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+        .wedding-index-text p {
+            font-size: 1.1rem;
+            color: #EAECEE;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+        .wedding-index-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent);
+            color: #111;
+            padding: 16px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(197, 168, 128, 0.3);
+            transition: var(--transition);
+        }
+        .wedding-index-btn:hover {
+            background-color: #fff;
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+        }
+        
+        .wedding-index-collage {
+            flex: 1.2;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .wedding-index-collage img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .wedding-index-collage img:hover {
+            transform: scale(1.05);
+            z-index: 5;
+            box-shadow: 0 20px 40px rgba(197, 168, 128, 0.3);
+        }
+        .w-img-1 { height: 450px; grid-row: span 2; }
+        .w-img-2 { height: 280px; }
+        .w-img-3 { height: 280px; margin-top: -110px; }
+
+        /* --- Premium Testimonial Section --- */
+        .testimonial-section { 
+            padding: 100px 8%; 
+            background-color: var(--bg-main); 
+        }
+        .testi-slider-wrapper { 
+            max-width: 1300px; 
+            margin: 40px auto 0; 
+            overflow-x: auto; 
+            scroll-behavior: smooth; 
+            padding-bottom: 25px;
+        }
+        .testi-slider-wrapper::-webkit-scrollbar { height: 6px; }
+        .testi-slider-wrapper::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 10px; }
+        .testi-track { display: flex; gap: 30px; width: max-content; }
+        .testi-card { 
+            background: var(--bg-surface); padding: 35px; border-radius: var(--radius-md); 
+            width: 380px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--accent); 
+            white-space: normal; display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); 
+        }
+        .testi-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-top-color: var(--primary); }
+        .stars { color: #f4c150; font-size: 1rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .testi-text { color: var(--text-muted); font-size: 0.98rem; font-style: italic; line-height: 1.7; margin-bottom: 25px; }
+        .testi-author { display: flex; align-items: center; gap: 15px; border-top: 1px dashed var(--border-color); padding-top: 20px; }
+        .author-avatar { width: 48px; height: 48px; background-color: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+        .author-info h4 { font-size: 1rem; color: var(--text-dark); font-weight: 600; }
+        .author-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- Responsive Sizing --- */
+        @media (max-width: 992px) {
+            .exclusive-wedding-index { flex-direction: column; text-align: center; }
+            .wedding-index-collage { width: 100%; }
+            .w-img-3 { margin-top: 0; }
+        }
+        @media (max-width: 768px) {
+            .slide-img { height: 380px; width: 280px; }
+            .giant-grid { grid-template-columns: 1fr; }
+            .giant-card { height: 450px; }
+            .giant-overlay { padding: 30px; }
+            .giant-overlay h3 { font-size: 1.6rem; }
+            .testi-card { width: 300px; padding: 25px; }
+            .wedding-index-text h2 { font-size: 2.8rem; }
+            .w-img-1 { height: 350px; }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- ================= NAVBAR ================= -->
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
@@ -25,66 +278,117 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
+            <!-- Navbar Tambahan Wedding -->
+            <li><a href="wedding.html">Wedding</a></li>
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
         </ul>
     </nav>
 
+    <!-- ================= HERO SECTION ================= -->
     <section class="hero" id="hero-section">
         <div class="hero-content">
             <h1>Capture Moment, <br><span>Creating Memories</span></h1>
-            <p>PHOTO STUDIO | SELF STUDIO | STUDIO RENT | EVENT & PARTY DOCUMENTATION</p>
+            <p>Photo Studio | Self Studio | Studio Rent | Event Documentation</p>
             <a href="layanan.html" class="btn-primary">Lihat Daftar Harga & Paket</a>
         </div>
     </section>
 
+    <!-- ================= AUTO SLIDER ================= -->
     <section class="auto-slider-section">
         <div class="slider-header">
             <h2>Karya <span>Terbaik Kami</span></h2>
-            <p>Sebagian kecil momen indah yang telah kami abadikan di Lensa Story Studio 1 & 2.</p>
+            <p>Saksikan keindahan momen yang terbingkai nyata lewat lensa profesional kami.</p>
         </div>
         <div class="slider-container">
             <div id="slider-track" class="slider-track">
-                </div>
+                <!-- Foto skala besar otomatis di-generate oleh JS -->
+            </div>
         </div>
     </section>
 
-    <section class="features-section">
+    <!-- ================= EXCLUSIVE WEDDING SECTION (BARU) ================= -->
+    <section class="exclusive-wedding-index">
+        <div class="wedding-index-text">
+            <h2>Exclusive <br><span>Wedding</span></h2>
+            <p>Elegance, Emotion, and Everlasting Memories. Abadikan momen penyatuan janji suci Anda dengan standar fotografi dan sinematografi premium. Sentuhan eksklusif Lensa Story Studio akan membuat cerita cinta Anda abadi melintasi masa.</p>
+            <a href="wedding.html" class="wedding-index-btn">
+                <i class="fas fa-gem"></i> Lihat Pricelist Wedding
+            </a>
+        </div>
+        <div class="wedding-index-collage">
+            <!-- Kolase Foto Wedding Estetik -->
+            <img src="koleksi_foto/studio1/wedding/(1).jpg" class="w-img-1" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Moment 1">
+            <img src="koleksi_foto/studio1/wedding/(6).jpg" class="w-img-2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Ring">
+            <img src="koleksi_foto/studio1/wedding/(5).jpg" class="w-img-3" onerror="this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" alt="Wedding Detail">
+        </div>
+    </section>
+
+    <!-- ================= GIANT SHOWCASE SECTION ================= -->
+    <section class="giant-showcase-section">
         <div class="features-header">
-            <h2>Kenapa Harus <span>Lensa Story Studio?</span></h2>
-            <p>Kami hadir dengan 2 Cabang Studio untuk memastikan setiap momen Anda terbingkai dengan sempurna.</p>
+            <h2>Eksplorasi <span>Layanan Visual</span></h2>
+            <p>Foto berukuran penuh untuk menggambarkan kemegahan studio dan hasil cetak premium kami.</p>
+        </div>
+
+        <div class="giant-grid">
+            <div class="giant-card">
+                <img src="koleksi_foto/studio1/selfphoto/(20).jpg" onerror="this.src='https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Self Photo Studio">
+                <div class="giant-overlay">
+                    <h3>Self Photo Studio</h3>
+                    <p>Ekspresikan gayamu tanpa batasan, tanpa canggung. Studio privat lengkap dengan shutter remote di tanganmu sendiri.</p>
+                    <a href="layanan.html" class="giant-btn">Lihat Paket Studio <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="giant-card">
+                <img src="koleksi_foto/studio1/graduation/(1).jpg" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Professional Photography">
+                <div class="giant-overlay">
+                    <h3>Professional Photography</h3>
+                    <p>Sesi dokumentasi profesional berkonsep matang, mulai dari Wisuda, Maternity, hingga potret kehangatan Keluarga.</p>
+                    <a href="layanan.html" class="giant-btn">Lihat Paket Pro <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="giant-card">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Photobooth Event Service">
+                <div class="giant-overlay">
+                    <h3>Event & Photobooth Service</h3>
+                    <p>Bawa keseruan studio cetak instan langsung ke lokasi acaramu. Souvenir eksklusif yang siap jadi dalam hitungan detik.</p>
+                    <a href="event.html" class="giant-btn">Jelajahi Layanan Event <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURES VALUE SECTION ================= -->
+    <section class="features-section" style="background-color: var(--bg-surface);">
+        <div class="features-header">
+            <h2>Kenapa Harus <span>Lensa Story?</span></h2>
+            <p>Komitmen kami menghadirkan standardisasi komersial terbaik untuk setiap kebutuhan bestie.</p>
         </div>
         
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                <h3>Kualitas Bagus</h3>
-                <p>Dukungan perlengkapan profesional menjamin setiap jepretan Bestie memiliki ketajaman dan detail berstandar komersial.</p>
+                <h3>Kualitas Premium</h3>
+                <p>Dukungan sensor kamera mutakhir dan pencahayaan studio konseptual menghasilkan detail gambar super tajam.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3>Proses Cepat</h3>
-                <p>Sistem kerja yang efisien memastikan file fotomu siap dinikmati dan dibagikan secepat mungkin.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
-                <h3>Terima Request Edit</h3>
-                <p>Hasil akhir ada di tanganmu. Bebas request gaya editing dan color grading sesuai seleramu.</p>
+                <h3>Proses Instan</h3>
+                <p>Sistem transmisi file berkecepatan tinggi menjamin seluruh softcopy siap diunduh sesaat setelah sesi selesai.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-couch"></i></div>
                 <h3>Studio Nyaman</h3>
-                <p>Suasana ruangan yang asyik, bersih, dan private bikin mood foto Bestie selalu on point.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-building"></i></div>
-                <h3>One-Stop Service</h3>
-                <p>Dari self-photo kasual sampai kebutuhan foto produk untuk bisnis, kami sediakan semuanya dalam satu atap!</p>
+                <p>Tata ruang privat, sejuk, dan higienis yang dirancang khusus untuk membangun mood berfoto terbaik Anda.</p>
             </div>
         </div>
     </section>
 
+    <!-- ================= TESTIMONIAL SECTION ================= -->
     <section class="testimonial-section">
         <div class="testi-header">
             <h2>Apa Kata <span>Bestie?</span></h2>
@@ -93,7 +397,6 @@
         
         <div class="testi-slider-wrapper">
             <div class="testi-track">
-                
                 <div class="testi-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="testi-text">"Seru banget foto di Lensa Story! Studionya bersih, propertinya banyak, dan asisten studionya sat-set bantuin kita. Hasil fotonya juga cepet banget jadinya. Recommended buat foto bareng bestie!"</p>
@@ -120,18 +423,6 @@
 
                 <div class="testi-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Kemarin foto keluarga di sini, fotografernya profesional banget, bisa arahin gaya buat bapak ibu yang kaku depan kamera. Pencahayaannya pas dan hasil cetaknya jernih."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">B</div>
-                        <div class="author-info">
-                            <h4>Budi Santoso</h4>
-                            <p>Family Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="testi-text">"Puas banget prewedding di sini! Hasil fotonya elegan dan warnanya dapet banget sesuai request kita. Krunya pada gercep bantuin set lighting. The best lah pokoknya."</p>
                     <div class="testi-author">
                         <div class="author-avatar">D</div>
@@ -141,83 +432,24 @@
                         </div>
                     </div>
                 </div>
-
+                
+                <!-- Testimoni Tambahan -->
                 <div class="testi-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Tempatnya nyaman dan aesthetic! Suka banget sama konsep Creative Box-nya. Harganya juga affordable banget buat kantong mahasiswa. Mantap Lensa Story!"</p>
+                    <p class="testi-text">"Kemarin foto keluarga di sini, fotografernya profesional banget, bisa arahin gaya buat bapak ibu yang kaku depan kamera. Pencahayaannya pas dan hasil cetaknya jernih."</p>
                     <div class="testi-author">
-                        <div class="author-avatar">R</div>
+                        <div class="author-avatar">B</div>
                         <div class="author-info">
-                            <h4>Rina Wati</h4>
-                            <p>Creative Box</p>
+                            <h4>Budi Santoso</h4>
+                            <p>Family Photo</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Studio favorit di Salatiga! Udah langganan dari jaman wisuda sampe sekarang maternity shoot tetep milih Lensa Story. Pilihan background-nya banyak."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">N</div>
-                        <div class="author-info">
-                            <h4>Nadia K.</h4>
-                            <p>Maternity Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Fasilitas super lengkap, AC dingin, ada kaca gede buat touch up makeup. Pelayanannya the best banget dari mulai datang sampe foto selesai."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">F</div>
-                        <div class="author-info">
-                            <h4>Fadila Nisa</h4>
-                            <p>Personal Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Cocok banget buat foto grup banyakan. Ruangannya luas, nggak sumpek. All digital files dikasih semua lewat link gdrive cepet banget. Puas pokoknya!"</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">I</div>
-                        <div class="author-info">
-                            <h4>Irfan Hakim</h4>
-                            <p>Group Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Pelayanannya ramah banget, pas datang langsung disambut baik. Harga paket Birthday Photo-nya worth it banget dapet cetakan gede buat kenang-kenangan."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>Mellyana</h4>
-                            <p>Birthday Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"Hasil fotonya tajam dan bagus banget. Buat pas foto formal buat lamar kerja cepet, bisa ditunggu dan sekalian minta di-retouch sedikit. Sukses terus Lensa Story!"</p>
-                    <div class="testi-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Arif Rahman</h4>
-                            <p>Pas Photo</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
+    <!-- ================= FOOTER ================= -->
     <footer id="kontak" class="footer">
         <div class="footer-top">
             <h2>Lensa Story Studio</h2>
@@ -236,7 +468,6 @@
                 <ul class="contact-list">
                     <li><i class="fas fa-clock"></i> <span>Open Daily: 09.00 - 21.00 WIB</span></li>
                     <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2389-2500</span></li>
-                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorystudio.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
                 </ul>
                 <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Arjuna+No.48,+Dukuh,+Kec.+Sidomukti,+Salatiga+50722" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
@@ -248,7 +479,6 @@
                 <ul class="contact-list">
                     <li><i class="fas fa-clock"></i> <span>Open Daily: 12.00 - 20.00 WIB</span></li>
                     <li><i class="fab fa-whatsapp"></i> <span>WhatsApp: +62 857-2519-9415</span></li>
-                    <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorypabelan.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
                 </ul>
                 <a href="https://www.google.com/maps/search/?api=1&query=PG38%2BQFC,+Jl.+Kenanga,+Kauman+Kidul,+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
@@ -259,8 +489,8 @@
         </div>
     </footer>
 
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        // Data struktur folder terbaru (Studio 1 dan Studio 2)
         const galleryData = {
             "studio1": { "selfphoto": 12, "creativebox": 8, "creativeselfie": 5, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 },
             "studio2": { "selfphoto": 12, "prewedding": 15, "passphoto": 3, "family": 10, "graduation": 20, "maternity": 7, "group": 9, "birthday": 5 }
@@ -268,24 +498,19 @@
 
         let fotoKoleksi = [];
 
-        // Mengambil maksimal 1 foto acak dari setiap layanan di setiap studio agar slider efisien dan merata
         for (const [studio, kategories] of Object.entries(galleryData)) {
             for (const [kategori, jumlah] of Object.entries(kategories)) {
                 let maxFoto = Math.min(jumlah, 1); 
                 for(let i=1; i<=maxFoto; i++) {
                     let acak = Math.floor(Math.random() * jumlah) + 1;
-                    // Format penarikan foto: koleksi_foto/studioX/kategori/(angka).jpg
                     fotoKoleksi.push(`koleksi_foto/${studio}/${kategori}/(${acak}).jpg`);
                 }
             }
         }
 
-        // Acak urutan foto gabungan
         fotoKoleksi.sort(() => Math.random() - 0.5);
 
         const track = document.getElementById('slider-track');
-
-        // Render foto diperbanyak agar animasi berjalan (marquee) tidak terputus
         const sliderImages = [...fotoKoleksi, ...fotoKoleksi, ...fotoKoleksi];
 
         sliderImages.forEach(src => {
@@ -293,33 +518,21 @@
             img.src = src;
             img.className = 'slide-img';
             img.loading = 'lazy';
-            img.onerror = function() { this.style.display = 'none'; }; // Sembunyikan jika foto tak ditemukan
+            img.onerror = function() { this.style.display = 'none'; }; 
             track.appendChild(img);
         });
 
-        // ==========================================
-        // SCRIPT BACKGROUND HERO OTOMATIS BERGANTI
-        // ==========================================
         const heroSection = document.getElementById('hero-section');
         let indexGambarHero = 0;
 
         function gantiBackgroundHero() {
             if (fotoKoleksi.length > 0) {
-                // Ambil URL gambar dari kumpulan foto yang sudah diacak untuk slider
                 const urlGambar = fotoKoleksi[indexGambarHero];
-                
-                // Terapkan gambar ke background Hero dengan overlay gelap (agar teks putih tetap terbaca)
-                heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url('${urlGambar}')`;
-                
-                // Maju ke gambar berikutnya, jika sudah habis kembali ke awal (looping)
+                heroSection.style.backgroundImage = `url('${urlGambar}')`;
                 indexGambarHero = (indexGambarHero + 1) % fotoKoleksi.length;
             }
         }
-
-        // Ganti gambar setiap 4 detik (4000 milidetik)
-        setInterval(gantiBackgroundHero, 4000);
-        
-        // Panggil fungsi sekali di awal agar tidak blank hitam saat baru buka web
+        setInterval(gantiBackgroundHero, 4500);
         gantiBackgroundHero();
     </script>
 
@@ -328,10 +541,7 @@
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            // Membuka atau menutup sidebar menu
             navLinks.classList.toggle('active');
-            
-            // Mengganti ikon garis tiga (bars) menjadi silang (times)
             const icon = mobileMenu.querySelector('i');
             if(navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');

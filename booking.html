@@ -25,6 +25,7 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
+            <li><a href="wedding.html">Wedding</a></li> <!-- MENU BARU -->
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
@@ -40,62 +41,64 @@
             
             <form id="bookingForm" class="booking-form">
                 
-                <div class="form-group" style="background: #f4fbfb; padding: 15px; border-radius: 8px; border-left: 4px solid #00433f;">
-                    <label for="studio" style="font-weight: 600; color: #00433f;">1. Pilih Lokasi / Jenis Layanan <span class="required">*</span></label>
-                    <select id="studio" class="form-control" required onchange="updatePilihanPaket()" style="border-color: #00433f; margin-top: 10px;">
+                <div class="form-group" style="background: var(--accent-light); padding: 20px; border-radius: var(--radius-sm); border-left: 4px solid var(--primary);">
+                    <label for="studio" style="font-weight: 600; color: var(--primary); margin-bottom: 10px;">
+                        <i class="fas fa-map-marker-alt"></i> 1. Pilih Lokasi / Jenis Layanan <span class="required" style="color: red;">*</span>
+                    </label>
+                    <select id="studio" class="form-control" required onchange="updatePilihanPaket()" style="background-color: #fff; border-color: rgba(0, 67, 63, 0.2); margin-top: 5px;">
                         <option value="" disabled selected>-- Pilih Studio atau Event --</option>
                         <option value="grogol">Studio 1 (Grogol - Utama)</option>
                         <option value="pabelan">Studio 2 (Pabelan - Cabang)</option>
-                        <option value="event">Layanan Event & Outdoor (Panggilan / On-Location)</option>
+                        <option value="event">Layanan Event & Outdoor (On-Location)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="paket">2. Pilih Kategori & Paket <span class="required">*</span></label>
+                    <label for="paket"><i class="fas fa-box-open"></i> 2. Pilih Kategori & Paket <span class="required" style="color: red;">*</span></label>
                     <select id="paket" class="form-control" required disabled>
                         <option value="" disabled selected>-- Silakan Pilih Lokasi/Layanan di Atas --</option>
                     </select>
                 </div>
 
-                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 30px 0;">
+                <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 30px 0;">
 
                 <div class="form-group">
-                    <label for="nama">Nama Lengkap / Instansi <span class="required">*</span></label>
+                    <label for="nama"><i class="fas fa-user"></i> Nama Lengkap / Instansi <span class="required" style="color: red;">*</span></label>
                     <input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso / PT. ABC" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="wa">Nomor WhatsApp <span class="required">*</span></label>
+                    <label for="wa"><i class="fab fa-whatsapp"></i> Nomor WhatsApp <span class="required" style="color: red;">*</span></label>
                     <input type="tel" id="wa" class="form-control" placeholder="Contoh: 081234567xxx" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="instagram">Akun Instagram <span class="optional">(Bisa dikosongkan)</span></label>
+                    <label for="instagram"><i class="fab fa-instagram"></i> Akun Instagram <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;">(Bisa dikosongkan)</span></label>
                     <input type="text" id="instagram" class="form-control" placeholder="Contoh: @budisnt_">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-6">
-                        <label id="label-tanggal" for="tanggal">Tanggal Pelaksanaan <span class="required">*</span></label>
+                        <label id="label-tanggal" for="tanggal"><i class="fas fa-calendar-alt"></i> Tanggal Pelaksanaan <span class="required" style="color: red;">*</span></label>
                         <input type="date" id="tanggal" class="form-control" required>
                     </div>
                     <div class="form-group col-6">
-                        <label id="label-jam" for="jam">Jam / Waktu <span class="required">*</span></label>
+                        <label id="label-jam" for="jam"><i class="fas fa-clock"></i> Jam / Waktu <span class="required" style="color: red;">*</span></label>
                         <input type="time" id="jam" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label id="label-orang" for="jumlah_orang">Jumlah Orang <span class="optional">(Isi perkiraan tamu jika pesan Event)</span> <span class="required">*</span></label>
+                    <label id="label-orang" for="jumlah_orang"><i class="fas fa-users"></i> Jumlah Orang <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;">(Isi perkiraan tamu jika pesan Event)</span> <span class="required" style="color: red;">*</span></label>
                     <input type="text" id="jumlah_orang" class="form-control" placeholder="Contoh: 3 Orang / 200 Tamu" required>
                 </div>
 
                 <div class="form-group">
-                    <label id="label-tambahan" for="tambahan">Alamat Lokasi Acara / Tambahan (Opsional)</label>
+                    <label id="label-tambahan" for="tambahan"><i class="fas fa-comment-alt"></i> Alamat Lokasi Acara / Catatan Tambahan <span class="optional" style="color: var(--text-muted); font-size: 0.85rem;">(Opsional)</span></label>
                     <input type="text" id="tambahan" class="form-control" placeholder="Contoh: Alamat hotel / Extra Time 5 mnt, dll">
                 </div>
 
-                <button type="submit" class="btn-submit" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Konfirmasi Booking via WA</button>
+                <button type="submit" class="btn-submit" style="margin-top: 25px;"><i class="fab fa-whatsapp"></i> Konfirmasi Booking via WA</button>
             </form>
         </div>
     </section>
@@ -121,6 +124,7 @@
                     <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorystudio.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
                 </ul>
+                <a href="maps.google.com/2" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
             </div>
 
             <div class="footer-col studio-box">
@@ -132,6 +136,7 @@
                     <li><i class="fab fa-instagram"></i> <span>Instagram: @lensastorypabelan.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
                 </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lensa+Story+Studio+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -205,7 +210,6 @@
                     ] 
                 }
             ],
-            // TAMBAHAN DATABASE BARU KHUSUS EVENT & OUTDOOR
             "event": [
                 { 
                     kategori: "PHOTOBOOTH - QUOTAS PACKAGE", 
@@ -242,11 +246,9 @@
             const studioPilihan = document.getElementById('studio').value;
             const selectPaket = document.getElementById('paket');
             
-            // Kosongkan dan aktifkan dropdown
             selectPaket.innerHTML = '<option value="" disabled selected>-- Pilih Kategori & Paket --</option>';
             selectPaket.disabled = false;
 
-            // Suntik opsi dari database
             if(databasePaket[studioPilihan]) {
                 databasePaket[studioPilihan].forEach(grup => {
                     const optgroup = document.createElement('optgroup');
@@ -281,7 +283,6 @@
             let targetWa = "";
             let textStudio = "";
             
-            // Routing WA (Event diteruskan ke Admin Utama Grogol)
             if (studioSelect === "grogol") {
                 targetWa = "6285723892500"; 
                 textStudio = "Studio 1 (Grogol)";
@@ -289,7 +290,7 @@
                 targetWa = "6285725199415"; 
                 textStudio = "Studio 2 (Pabelan)";
             } else if (studioSelect === "event") {
-                targetWa = "6285723892500"; // WA Utama untuk Event
+                targetWa = "6285723892500"; 
                 textStudio = "Layanan Event / Outdoor (On-Location)";
             }
 
@@ -312,14 +313,12 @@
     </script>
 
     <script>
+        // SCRIPT NAVIGATION HAMBURGER MENU (MOBILE)
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            // Membuka atau menutup sidebar menu
             navLinks.classList.toggle('active');
-            
-            // Mengganti ikon garis tiga (bars) menjadi silang (times)
             const icon = mobileMenu.querySelector('i');
             if(navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');

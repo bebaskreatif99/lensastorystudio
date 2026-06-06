@@ -7,6 +7,78 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Melebarkan area agar foto tidak menumpuk di tengah seperti sebelumnya */
+        .photo-view-container {
+            max-width: 1400px; 
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Pengaturan Kolase (Pinterest Style) */
+        .masonry-grid {
+            column-count: 4; /* Dibagi menjadi 4 kolom menyamping */
+            column-gap: 20px; /* Jarak antar kolom */
+            margin-top: 30px;
+            padding-bottom: 50px;
+        }
+        
+        /* Pengaturan Masing-Masing Foto (Tanpa Crop) */
+        .masonry-item {
+            break-inside: avoid; /* Mencegah foto terpotong di antara kolom */
+            margin-bottom: 20px; /* Jarak atas-bawah antar foto */
+            border-radius: 12px;
+            width: 100%;
+            height: auto; /* TINGGI OTOMATIS: Mencegah foto di-crop/potong */
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Efek Hover: Memainkan Scale agar membesar rapi */
+        .masonry-item:hover {
+            transform: scale(1.05); /* Foto membesar 5% */
+            box-shadow: 0 15px 35px rgba(0, 67, 63, 0.25); /* Bayangan hijau elegan */
+            z-index: 10; /* Membawa foto ke paling depan agar tidak tertutup foto lain */
+        }
+
+        /* Tombol Kembali yang lebih rapi */
+        .btn-back-gallery {
+            background-color: var(--text-dark, #111);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-back-gallery:hover {
+            background-color: var(--primary, #00433f);
+            transform: translateX(-5px);
+        }
+
+        /* Responsif Kolase untuk HP & Tablet */
+        @media (max-width: 1100px) {
+            .masonry-grid { column-count: 3; }
+        }
+        @media (max-width: 768px) {
+            .masonry-grid { column-count: 2; column-gap: 15px; }
+            .masonry-item { margin-bottom: 15px; }
+        }
+        @media (max-width: 480px) {
+            .masonry-grid { column-count: 1; } /* Di HP sangat kecil jadi 1 kolom */
+        }
+    </style>
 </head>
 <body>
 
@@ -25,6 +97,7 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
+            <li><a href="wedding.html">Wedding</a></li> <!-- MENU BARU -->
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
@@ -47,8 +120,11 @@
             </div>
 
         <div id="photo-view" class="photo-view-container" style="display: none;">
-            <button class="btn-back" onclick="kembaliKeAlbum()"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Layanan</button>
-            <h2 id="judul-album" class="category-main-title" style="margin-top: 30px;">Nama Layanan</h2>
+            <button class="btn-back-gallery" onclick="kembaliKeAlbum()"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Album</button>
+            
+            <h2 id="judul-album" class="category-main-title" style="margin-top: 30px; display: inline-block;">
+                Nama Layanan
+            </h2>
             
             <div id="masonry-container" class="masonry-grid">
                 </div>
@@ -77,7 +153,6 @@
                     <li><i class="fab fa-instagram"></i> <span><strong>Instagram:</strong> @lensastorystudio.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>Jl. Arjuna No.48, Dukuh, Kec. Sidomukti, Salatiga 50722</span></li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Arjuna+No.48,+Dukuh,+Kec.+Sidomukti,+Salatiga+50722" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 1</a>
             </div>
 
             <div class="footer-col studio-box">
@@ -89,7 +164,6 @@
                     <li><i class="fab fa-instagram"></i> <span><strong>Instagram:</strong> @lensastorypabelan.id</span></li>
                     <li><i class="fas fa-map-marker-alt"></i> <span>PG38+QFC, Jl. Kenanga, RT.02/RW.06, Kauman Kidul, Kec. Sidorejo, Kota Salatiga 50712</span></li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=PG38%2BQFC,+Jl.+Kenanga,+Kauman+Kidul,+Salatiga" target="_blank" class="btn-maps"><i class="fas fa-location-arrow"></i> Petunjuk Arah Studio 2</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -112,12 +186,11 @@
                 "birthday": { judul: "Birthday Photo", jumlah_foto: 50 }
             },
             "studio2": {
-                // Silakan sesuaikan jenis album & jumlah fotonya untuk Studio 2
                 "selfphoto": { judul: "Self Photo Studio", jumlah_foto: 39 }, 
-                "maternity": { judul: "maternity Photo ", jumlah_foto: 9 },    
+                "maternity": { judul: "Maternity Photo ", jumlah_foto: 9 },    
                 "family": { judul: "Family Photo", jumlah_foto: 15 },
                 "graduation": { judul: "Graduation", jumlah_foto: 19 },
-                "group": { judul: "group", jumlah_foto: 10 }
+                "group": { judul: "Group", jumlah_foto: 10 }
             }
         };
 
@@ -131,13 +204,11 @@
 
         // Fungsi Membuat Daftar Album Berdasarkan Studio yang Dipilih
         function renderDaftarAlbum(studio) {
-            albumView.innerHTML = ''; // Reset tampilan album
+            albumView.innerHTML = ''; 
             const dataAlbum = galleryData[studio];
 
             for (const [kategori, data] of Object.entries(dataAlbum)) {
                 const randomAngka = Math.floor(Math.random() * data.jumlah_foto) + 1;
-                
-                // Path gambar diarahkan ke sub-folder studio masing-masing
                 const coverImage = `koleksi_foto/${studio}/${kategori}/(${randomAngka}).jpg`;
 
                 const albumCard = document.createElement('div');
@@ -154,27 +225,30 @@
             }
         }
 
-        // Fungsi Buka Album (Acak Foto & Render)
+        // Fungsi Buka Album (Acak Foto & Render Kolase)
         function bukaAlbum(studio, kategori, data) {
             albumView.style.display = 'none';
-            studioSelector.style.display = 'none'; // Sembunyikan pilihan studio saat melihat foto
+            studioSelector.style.display = 'none'; 
             photoView.style.display = 'block';
             
             const infoStudio = studio === 'studio1' ? 'Studio 1 (Grogol)' : 'Studio 2 (Pabelan)';
-            judulAlbum.innerHTML = `${data.judul} <br><span style="font-size: 1.1rem; font-weight: 500; color: #666;">${infoStudio}</span>`;
-            masonryContainer.innerHTML = '';
+            judulAlbum.innerHTML = `<i class="fas fa-folder-open" style="color: #00433f;"></i> ${data.judul} <br><span style="font-size: 1rem; font-weight: 500; color: #666; display: block; margin-top: 5px;">${infoStudio}</span>`;
+            
+            masonryContainer.innerHTML = ''; // Bersihkan container
 
             let urutanFoto = [];
             for (let i = 1; i <= data.jumlah_foto; i++) {
                 urutanFoto.push(i);
             }
 
+            // Acak urutan tampil foto
             urutanFoto.sort(() => Math.random() - 0.5);
 
+            // Masukkan gambar ke dalam masonry container
             urutanFoto.forEach(angka => {
                 const img = document.createElement('img');
                 img.className = 'masonry-item';
-                img.loading = 'lazy'; // Pemuatan gambar hemat data (Lazy load)
+                img.loading = 'lazy'; 
                 img.src = `koleksi_foto/${studio}/${kategori}/(${angka}).jpg`; 
                 img.onerror = function() { this.style.display = 'none'; };
                 
@@ -187,10 +261,10 @@
         function kembaliKeAlbum() {
             photoView.style.display = 'none';
             albumView.style.display = 'grid'; 
-            studioSelector.style.display = 'flex'; // Tampilkan kembali pilihan studio
+            studioSelector.style.display = 'flex'; 
         }
 
-        // Fungsi untuk Switch/Ganti Pilihan Studio
+        // Fungsi Switch/Ganti Pilihan Studio
         function gantiStudio(studio) {
             studioAktif = studio;
             document.getElementById('btn-studio1').classList.toggle('active', studio === 'studio1');
@@ -198,7 +272,6 @@
             renderDaftarAlbum(studio);
         }
 
-        // Load pertama kali saat halaman dibuka (Default Studio 1)
         renderDaftarAlbum("studio1");
     </script>
 
@@ -207,10 +280,7 @@
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            // Membuka atau menutup sidebar menu
             navLinks.classList.toggle('active');
-            
-            // Mengganti ikon garis tiga (bars) menjadi silang (times)
             const icon = mobileMenu.querySelector('i');
             if(navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');

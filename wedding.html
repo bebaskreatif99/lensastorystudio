@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Package - Lensa Story Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS KHUSUS WEDDING (PREMIUM, CLEAN, ELEGANT) -->
+    <style>
+        .wedding-header {
+            background: linear-gradient(135deg, rgba(0,67,63,0.95) 0%, rgba(17,17,17,0.95) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 140px 20px 80px;
+            text-align: center;
+            color: #fff;
+        }
+        .wedding-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .wedding-header h1 span {
+            color: var(--accent, #C5A880);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .wedding-header p {
+            font-size: 1.1rem;
+            color: #EAECEE;
+            max-width: 600px;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .start-from-badge {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: var(--accent, #C5A880);
+            color: #111;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 40px;
+            box-shadow: 0 8px 20px rgba(197, 168, 128, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- BACKGROUND TRANSPARAN (WATERMARK) --- */
+        .wedding-pricing-section {
+            padding: 80px 8%;
+            background-color: var(--bg-main, #FAFBFC);
+            position: relative; /* Agar watermark absolut tidak keluar batas */
+            overflow: hidden; /* Mencegah elemen keluar menyebabkan scroll */
+            z-index: 1;
+        }
+        .watermark-bg {
+            position: absolute;
+            z-index: -1; /* Berada di belakang semua teks dan kartu */
+            opacity: 0.03; /* Transparansi sangat tipis (3%) agar elegan */
+            pointer-events: none; /* Tidak bisa diklik */
+            filter: grayscale(100%); /* Hitam putih agar menyatu dengan background */
+        }
+        .wm-1 {
+            top: -5%;
+            left: -10%;
+            width: 600px;
+            transform: rotate(-15deg);
+        }
+        .wm-2 {
+            top: 20%;
+            right: -15%;
+            width: 700px;
+            transform: rotate(20deg);
+        }
+        .wm-3 {
+            bottom: -5%;
+            left: 20%;
+            width: 500px;
+            opacity: 0.04;
+        }
+
+        /* Pricing Layout */
+        .wedding-section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        .wedding-section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark, #2C3E50);
+            margin-bottom: 10px;
+        }
+        .wedding-section-title h2 i {
+            color: var(--accent, #C5A880);
+            margin-right: 10px;
+        }
+        .wedding-section-title p {
+            color: var(--text-muted, #7F8C8D);
+        }
+
+        .wedding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wedding-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--primary, #00433f);
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .wedding-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,67,63,0.1);
+        }
+        .wedding-card.premium {
+            border-top: 5px solid var(--accent, #C5A880);
+            background: linear-gradient(to bottom, #ffffff 0%, #F9F6F0 100%);
+        }
+        .wedding-card.masterpiece {
+            grid-column: 1 / -1; 
+            border-top: 5px solid #111;
+            background: #fff;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent, #C5A880);
+            color: #fff;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(197, 168, 128, 0.4);
+            white-space: nowrap;
+        }
+
+        .wedding-card-head {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #EAECEE;
+        }
+        .wedding-card-head h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark, #2C3E50);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .wedding-card-head .price {
+            font-size: 1.7rem; 
+            color: var(--primary, #00433f);
+            font-weight: 700;
+        }
+        .wedding-card-head .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .wedding-features {
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+        .wedding-features li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #f0f0f0;
+            color: #555;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .wedding-features li i {
+            color: var(--accent, #C5A880);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+        .wedding-features li strong {
+            color: var(--primary, #00433f);
+        }
+
+        .btn-wedding {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            border-radius: 30px;
+            background: transparent;
+            color: var(--primary, #00433f);
+            border: 2px solid var(--primary, #00433f);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-wedding:hover {
+            background: var(--primary, #00433f);
+            color: #fff;
+        }
+        .wedding-card.premium .btn-wedding {
+            background: var(--accent, #C5A880);
+            color: #fff;
+            border-color: var(--accent, #C5A880);
+        }
+        .wedding-card.premium .btn-wedding:hover {
+            background: var(--primary, #00433f);
+            border-color: var(--primary, #00433f);
+        }
+
+        .bundling-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .bundling-split { grid-template-columns: 1fr; }
+        }
+        .bundling-group h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        /* --- BANNER NEGOSIASI KHUSUS --- */
+        .nego-section {
+            padding: 20px 8% 80px;
+            background-color: var(--bg-main, #FAFBFC);
+            position: relative;
+            z-index: 2;
+        }
+        .nego-banner {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #00433f 0%, #002d2a 100%);
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(0,67,63,0.15);
+            border-bottom: 6px solid var(--accent, #C5A880);
+        }
+        .nego-banner h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent, #C5A880);
+        }
+        .nego-banner p {
+            font-size: 1.05rem;
+            color: #EAECEE;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-wa-nego {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-wa-nego:hover {
+            background-color: #1EBE5D;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+            color: #fff;
+        }
+
+        /* --- GALERI WEDDING (MASONRY PINTEREST) --- */
+        .wedding-gallery-section {
+            padding: 20px 8% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 20px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 1;
+        }
+        .masonry-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 67, 63, 0.25);
+            z-index: 10;
+        }
+        @media (max-width: 1100px) { .masonry-grid { column-count: 3; } }
+        @media (max-width: 768px) { 
+            .masonry-grid { column-count: 2; column-gap: 15px; } 
+            .wedding-header h1 { font-size: 2.5rem; } 
+            .start-from-badge { font-size: 1.1rem; }
+            .nego-banner { padding: 35px 20px; }
+            .nego-banner h3 { font-size: 1.6rem; }
+            .wm-1, .wm-2, .wm-3 { opacity: 0.02; /* Lebih tipis di HP agar teks tetap terbaca */ }
+        }
+        @media (max-width: 480px) { .masonry-grid { column-count: 1; } }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Lensa Story Studio" class="img-logo">
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan Studio</a></li>
+            <li><a href="event.html">Event & Party</a></li>
+            <li><a href="wedding.html">Wedding</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
+        </ul>
+    </nav>
+
+    <!-- ================= HEADER EKSKLUSIF & START FROM ================= -->
+    <header class="wedding-header">
+        <h1>Exclusive <span>Wedding</span></h1>
+        <p>Elegance, Emotion, and Everlasting Memories</p>
+        <div class="start-from-badge">Start from Rp 1.800.000</div>
+    </header>
+
+    <!-- ================= DAFTAR HARGA & WATERMARK BACKGROUND ================= -->
+    <section class="wedding-pricing-section">
+        
+        <!-- FOTO TRANSPARAN DI BACKGROUND (Watermark) -->
+        <img src="https://images.unsplash.com/photo-1518805620953-ce203b5b62b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="watermark-bg wm-1" alt="Bunga Transparan">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="watermark-bg wm-2" alt="Cincin Transparan">
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="watermark-bg wm-3" alt="Dekorasi Transparan">
+
+        <div class="wedding-section-title">
+            <h2><i class="fas fa-camera"></i> Wedding Photography</h2>
+            <p>Dokumentasi foto esensial untuk mengabadikan momen suci pernikahan Anda.</p>
+        </div>
+
+        <div class="wedding-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-bottom: 60px;">
+            
+            <!-- PAKET 1 -->
+            <div class="wedding-card">
+                <div class="wedding-card-head">
+                    <h3>PAKET 1</h3>
+                    <div class="price">Rp 1.800.000 <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 6 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 80 Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 1 Photographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 1 Kamera + Lensa</li>
+                    <li><i class="fas fa-gift"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 1</a>
+            </div>
+
+            <!-- PAKET 2 -->
+            <div class="wedding-card">
+                <div class="wedding-card-head">
+                    <h3>PAKET 2</h3>
+                    <div class="price">Rp 2.900.000 <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 7 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 120 Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 2 Photographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 2 Kamera + Lensa</li>
+                    <li><i class="fas fa-gift"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 2</a>
+            </div>
+
+            <!-- PAKET 3 -->
+            <div class="wedding-card">
+                <div class="wedding-card-head">
+                    <h3>PAKET 3</h3>
+                    <div class="price">Rp 3.800.000 <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 8 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 200 Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 2 Photographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 2 Kamera + Lensa</li>
+                    <li><i class="fas fa-hdd"></i> All File in Flash Disk 16GB</li>
+                    <li><i class="fas fa-envelope-open-text"></i> Gratis Undangan Digital</li>
+                    <li><i class="fas fa-gift"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 3</a>
+            </div>
+
+            <!-- PAKET 4 -->
+            <div class="wedding-card premium">
+                <div class="card-badge">Best Value</div>
+                <div class="wedding-card-head">
+                    <h3>PAKET 4</h3>
+                    <div class="price">Rp 4.750.000 <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 10 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 250 Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 2 Photographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 2 Kamera + Lensa</li>
+                    <li><i class="fas fa-hdd"></i> All File in Flash Disk 32GB</li>
+                    <li><i class="fas fa-envelope-open-text"></i> Gratis Undangan Digital</li>
+                    <li><i class="fas fa-book-open"></i> <strong>Photobook Premium</strong></li>
+                    <li><i class="fas fa-gift"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 4</a>
+            </div>
+
+        </div>
+
+        <div class="wedding-section-title" style="margin-top: 100px;">
+            <h2><i class="fas fa-film"></i> Cinematic Bundling (Photo + Video)</h2>
+            <p>Tangkapan emosi bergerak dalam resolusi tinggi untuk dikenang sepanjang masa.</p>
+        </div>
+
+        <div class="wedding-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); margin-bottom: 60px;">
+            
+            <!-- PAKET 5 -->
+            <div class="wedding-card">
+                <div class="wedding-card-head">
+                    <h3>PAKET 5</h3>
+                    <div class="price">Rp x.xxx.xxx <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 12 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 200+ Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 2 Photographer + 1 Videographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 3 Kamera + Lensa</li>
+                    <li><i class="fas fa-hdd"></i> All File in Flash Disk 32GB</li>
+                    <li><i class="fas fa-book-open"></i> Photobook Premium & Undangan Digital</li>
+                    <li><i class="fas fa-video"></i> <strong>Video Cinematic 1-2 Menit (Landscape 16:9)</strong></li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Bonus:</strong> Video Teaser Reels/TikTok (Vertical 9:16)</li>
+                    <li><i class="fas fa-cloud"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 5</a>
+            </div>
+
+            <!-- PAKET 6 -->
+            <div class="wedding-card premium">
+                <div class="card-badge">Highly Recommended</div>
+                <div class="wedding-card-head">
+                    <h3>PAKET 6</h3>
+                    <div class="price">Rp x.xxx.xxx <span>/nett</span></div>
+                </div>
+                <ul class="wedding-features">
+                    <li><i class="fas fa-check"></i> Unlimited Foto</li>
+                    <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 12 Jam</li>
+                    <li><i class="fas fa-sliders-h"></i> 250+ Pro Editing Social Media Tone</li>
+                    <li><i class="fas fa-user-tie"></i> 3 Photographer + 2 Videographer</li>
+                    <li><i class="fas fa-camera-retro"></i> 5 Kamera + Lensa</li>
+                    <li><i class="fas fa-hdd"></i> All File in Flash Disk 64GB</li>
+                    <li><i class="fas fa-book-open"></i> Photobook Premium & Undangan Digital</li>
+                    <li><i class="fas fa-video"></i> <strong>Video Cinematic 1-2 Menit (Landscape 16:9)</strong></li>
+                    <li><i class="fas fa-heart"></i> <strong>Gratis:</strong> Prewedding Photoshoot</li>
+                    <li><i class="fas fa-mobile-alt"></i> <strong>Bonus:</strong> Video Teaser Reels/TikTok (Vertical 9:16)</li>
+                    <li><i class="fas fa-cloud"></i> <strong>Bonus:</strong> Akses Google Drive (Aktif 1 Tahun)</li>
+                </ul>
+                <a href="booking.html" class="btn-wedding">Pesan Paket 6</a>
+            </div>
+
+        </div>
+
+        <div class="wedding-section-title" style="margin-top: 100px;">
+            <h2><i class="fas fa-crown"></i> All-In Bundling Masterpiece</h2>
+            <p>Prewedding + Wedding + Photobooth. Penawaran super hemat yang merangkum seluruh kebutuhan dokumentasi dan hiburan tamu Anda di tahun 2026.</p>
+        </div>
+
+        <div class="wedding-grid">
+            
+            <!-- BUNDLING 1 -->
+            <div class="wedding-card masterpiece">
+                <div class="wedding-card-head" style="border-bottom: none; padding-bottom: 0;">
+                    <h3>BUNDLING 1: EXCLUSIVE JOURNEY</h3>
+                    <div class="price" style="color: #111;">Rp 10.500.000 <span>/nett</span></div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">Paket hemat dokumentasi komprehensif dari pra-acara hingga hari H.</p>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #EAECEE; margin: 20px 0 30px;">
+                
+                <div class="bundling-split">
+                    <div class="bundling-group">
+                        <h4>Prewedding Session</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-check"></i> 1 Sesi Foto (In/Outdoor) Max 4 Jam</li>
+                            <li><i class="fas fa-tshirt"></i> 2 Tema Pakaian / Konsep</li>
+                            <li><i class="fas fa-sliders-h"></i> 50 Pro Editing Social Media Tone</li>
+                            <li><i class="fas fa-images"></i> Bonus 1 Cetak Pameran (16R/20R + Bingkai)</li>
+                        </ul>
+                    </div>
+                    <div class="bundling-group">
+                        <h4>Wedding Day</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 10 Jam</li>
+                            <li><i class="fas fa-camera"></i> 2 Photographer (2 Kamera + Lensa)</li>
+                            <li><i class="fas fa-sliders-h"></i> 250 Pro Editing Social Media Tone</li>
+                            <li><i class="fas fa-book"></i> Cetak Photobook Premium & Undangan Digital</li>
+                            <li><i class="fas fa-hdd"></i> Flash Disk 32GB & Google Drive</li>
+                        </ul>
+                    </div>
+                    <div class="bundling-group">
+                        <h4>Photobooth Layanan</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-print"></i> Unlimited 2 Jam Cetak 4R</li>
+                            <li><i class="fas fa-paint-brush"></i> Fast editing & Desain overlay custom</li>
+                            <li><i class="fas fa-masks-theater"></i> Fun property photobooth</li>
+                            <li><i class="fas fa-users"></i> 1 Fotografer & 1 Asisten</li>
+                            <li><i class="fas fa-qrcode"></i> Live QR Code & Cloud Sharing (Powered by mybooth.id)</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="booking.html" class="btn-wedding" style="background: #111; color: #fff; border-color: #111; margin-top: 20px;">Ambil Penawaran Bundling 1</a>
+            </div>
+
+            <!-- BUNDLING 2 -->
+            <div class="wedding-card masterpiece" style="border-top-color: var(--accent); margin-top: 30px;">
+                <div class="card-badge" style="background: var(--primary);">Ultimate Package</div>
+                <div class="wedding-card-head" style="border-bottom: none; padding-bottom: 0;">
+                    <h3>BUNDLING 2: ULTIMATE PLATINUM</h3>
+                    <div class="price" style="color: var(--accent);">Rp 13.500.000 <span>/nett</span></div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">Paket Masterpiece! Dokumentasi Foto & Video terlengkap dengan fasilitas photobooth maksimal.</p>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #EAECEE; margin: 20px 0 30px;">
+                
+                <div class="bundling-split">
+                    <div class="bundling-group">
+                        <h4>Prewedding Session</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-check"></i> 1 Sesi Foto (In/Outdoor) Max 6 Jam</li>
+                            <li><i class="fas fa-tshirt"></i> 3 Tema Pakaian / Konsep</li>
+                            <li><i class="fas fa-sliders-h"></i> 100 Pro Editing Social Media Tone</li>
+                            <li><i class="fas fa-images"></i> Bonus 2 Cetak Pameran (16R/20R + Bingkai)</li>
+                        </ul>
+                    </div>
+                    <div class="bundling-group">
+                        <h4>Wedding Day (Setara Pkt 6)</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-clock"></i> 1 Acara / 1 Lokasi Max 12 Jam</li>
+                            <li><i class="fas fa-video"></i> 3 Photographer + 2 Videographer</li>
+                            <li><i class="fas fa-film"></i> Cinematic 1-2 Mnt + Reels/TikTok Teaser</li>
+                            <li><i class="fas fa-sliders-h"></i> 250+ Pro Editing Social Media Tone</li>
+                            <li><i class="fas fa-book"></i> Photobook Premium, Flashdisk 64GB, GDrive</li>
+                        </ul>
+                    </div>
+                    <div class="bundling-group">
+                        <h4>Photobooth Layanan</h4>
+                        <ul class="wedding-features">
+                            <li><i class="fas fa-print"></i> Unlimited 3 Jam Cetak 4R</li>
+                            <li><i class="fas fa-camera"></i> Set Lighting Studio & Kamera DSLR</li>
+                            <li><i class="fas fa-paint-brush"></i> Fast editing & Custom overlay</li>
+                            <li><i class="fas fa-qrcode"></i> Live QR Code & Cloud Sharing (Powered by mybooth.id)</li>
+                            <li><i class="fas fa-gift"></i> Free Basic Decoration & Slide Show</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="booking.html" class="btn-wedding" style="background: var(--accent); color: #fff; border-color: var(--accent); margin-top: 20px;">Ambil Penawaran Bundling 2</a>
+            </div>
+
+        </div>
+
+        <!-- Catatan Tambahan -->
+        <div style="max-width: 1200px; margin: 40px auto 0; background: var(--accent-light); padding: 20px 30px; border-radius: 12px; border-left: 4px solid var(--accent); position: relative; z-index: 2;">
+            <h4 style="color: var(--text-dark); margin-bottom: 10px; font-size: 1rem;"><i class="fas fa-info-circle"></i> Catatan Tambahan:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.9rem; margin-left: 20px; line-height: 1.6;">
+                <li>Paket Bundling di atas sudah memotong harga normal jika ditotal secara satuan.</li>
+                <li>Biaya transportasi dan akomodasi untuk lokasi di luar kota akan disesuaikan kembali.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ================= NEGOTIATION / KONSULTASI BANNER ================= -->
+    <section class="nego-section">
+        <div class="nego-banner">
+            <h3>Punya Budget Khusus? Yuk, Kita Ngobrol! 🤝</h3>
+            <p>Kami sangat mengerti bahwa setiap pasangan memiliki rencana dan alokasi dana yang berbeda-beda untuk momen spesialnya. Jangan sampai <i>budget</i> menghalangimu mendapatkan dokumentasi impian! Lensa Story Studio sangat terbuka untuk <strong>diskusi, penyesuaian fasilitas (kustomisasi paket), hingga negosiasi harga</strong>.</p>
+            
+            <a href="https://wa.me/6285723892500?text=Halo%20Admin%20Lensa%20Story,%20saya%20tertarik%20dengan%20layanan%20Wedding%20tapi%20ingin%20berkonsultasi%20mengenai%20budget%20dan%20kustomisasi%20paket.%20Bisa%20dibantu?" target="_blank" class="btn-wa-nego">
+                <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Konsultasi & Nego via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= THE WEDDING GALLERY (AUTO GENERATED) ================= -->
+    <section class="wedding-gallery-section">
+        <div class="wedding-section-title">
+            <h2><i class="fas fa-images"></i> Wedding Portfolio</h2>
+            <p>Sentuhan warna eksklusif Lensa Story pada momen terindah klien kami.</p>
+        </div>
+        
+        <!-- Wadah Masonry Kosong, akan diisi otomatis oleh JavaScript -->
+        <div class="masonry-grid" id="wedding-masonry">
+            <!-- Foto akan di-generate di sini -->
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="kontak" class="footer">
+        <div class="footer-top">
+            <h2>Lensa Story Studio</h2>
+            <p class="slogan">"Capture Moment, Creating Memories"</p>
+            <div class="socials-center">
+                <a href="https://instagram.com/lensastorystudio.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/lensastorypabelan.id" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@lensastorystudio.id" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lensa Story Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ==========================================
+        // SCRIPT GALERI WEDDING OTOMATIS
+        // ==========================================
+        
+        // Atur berapa banyak jumlah foto wedding yang ingin ditampilkan (Contoh: 15 foto)
+        const jumlahFotoWedding = 15; 
+        
+        // Tentukan folder tempat foto wedding Anda disimpan
+        // Contoh ini mengambil dari folder prewedding. Ubah ke folder "wedding" jika Anda memisahkannya
+        const folderWedding = "koleksi_foto/studio1/wedding/"; 
+        
+        const weddingMasonry = document.getElementById('wedding-masonry');
+        let weddingPhotos = [];
+
+        // Membuat daftar link gambar berdasarkan jumlah yang ditentukan
+        for (let i = 1; i <= jumlahFotoWedding; i++) {
+            weddingPhotos.push(`${folderWedding}(${i}).jpg`);
+        }
+
+        // Opsional: Mengacak urutan foto setiap kali halaman direfresh (Hapus baris ini jika ingin urut 1, 2, 3...)
+        weddingPhotos.sort(() => Math.random() - 0.5);
+
+        // Memasukkan gambar ke dalam HTML satu per satu
+        weddingPhotos.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'masonry-item';
+            img.loading = 'lazy'; // Hemat kuota, gambar dimuat saat di-scroll
+            img.alt = 'Wedding Portfolio Lensa Story';
+            
+            // Jika foto dengan nomor tersebut tidak ada, jangan tampilkan kotak rusak
+            img.onerror = function() { this.style.display = 'none'; }; 
+            
+            weddingMasonry.appendChild(img);
+        });
+
+        // ==========================================
+        // SCRIPT NAVBAR MOBILE (HAMBURGER MENU)
+        // ==========================================
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -7,9 +7,70 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS KHUSUS UNTUK GALERI EVENT (FOTO & VIDEO) -->
+    <style>
+        .event-gallery-section {
+            padding: 80px 8% 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 20px;
+            margin-top: 30px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+            cursor: zoom-in;
+            position: relative;
+            z-index: 1;
+            background-color: #000; /* Background hitam untuk video saat loading */
+        }
+        .masonry-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 67, 63, 0.25);
+            z-index: 10;
+        }
+        
+        /* Tanda play kecil di pojok video agar pengunjung tahu itu video */
+        .video-wrapper {
+            position: relative;
+            break-inside: avoid;
+            margin-bottom: 20px;
+        }
+        .video-wrapper video {
+            margin-bottom: 0;
+        }
+        .video-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Responsif Kolase */
+        @media (max-width: 1100px) { .masonry-grid { column-count: 3; } }
+        @media (max-width: 768px) { .masonry-grid { column-count: 2; column-gap: 15px; } .masonry-item { margin-bottom: 15px; } }
+        @media (max-width: 480px) { .masonry-grid { column-count: 1; } }
+    </style>
 </head>
 <body>
 
+    <!-- ================= NAVBAR ================= -->
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
@@ -25,40 +86,49 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="layanan.html">Layanan Studio</a></li>
             <li><a href="event.html">Event & Party</a></li>
+            <li><a href="wedding.html">Wedding</a></li> <!-- MENU BARU -->
             <li><a href="galeri.html">Galeri</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="booking.html" class="btn-nav">Reservasi Sekarang</a></li>
         </ul>
     </nav>
 
+    <!-- ================= PAGE HEADER ================= -->
     <div class="page-header">
         <h1>Event & <span>Party Service</span></h1>
         <p>Bawa keseruan Lensa Story Studio langsung ke tempat acaramu.</p>
     </div>
 
-    <section class="price-section" style="padding-top: 50px;">
+    <!-- ================= LAYANAN PHOTOBOOTH ================= -->
+    <section class="price-section" style="padding-top: 80px;">
         <h2 class="category-main-title"><i class="fas fa-camera-retro"></i> LAYANAN PHOTOBOOTH</h2>
-        <p style="text-align: center; color: #666; margin-top: -30px; margin-bottom: 40px;">Solusi suvenir instan dan hiburan interaktif untuk memeriahkan hari bahagiamu.</p>
+        <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Solusi suvenir instan dan hiburan interaktif untuk memeriahkan hari bahagiamu.
+        </p>
         
-        <div class="price-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="price-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
             
+            <!-- Card Photobooth Quota -->
             <div class="price-card">
-                <div class="card-header" style="background-color: #f4fbfb;">
+                <!-- Tambahan Thumbnail Foto untuk Quotas Package -->
+                <img class="card-cover" src="koleksi_foto/event/photobooth-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Photobooth Quota">
+                <div class="card-header" style="background-color: var(--accent-light);">
                     <h3>1. Quotas Package</h3>
                     <p class="desc">Paket cetak berbasis kuota lembar foto. Cocok untuk acara skala menengah dan tertarget.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper" style="max-height: none;">
+                <div class="card-details-wrapper">
                     <div class="packages">
-                        <ul class="pack-list-detail extra-list-style" style="margin-top: 0; margin-bottom: 25px;">
-                            <li><span style="font-weight: 600;">50 Pack</span> <span class="price">Rp 1.200.000</span></li>
-                            <li><span style="font-weight: 600;">100 Pack</span> <span class="price">Rp 1.500.000</span></li>
-                            <li><span style="font-weight: 600;">150 Pack</span> <span class="price">Rp 1.900.000</span></li>
-                            <li><span style="font-weight: 600;">200 Pack</span> <span class="price">Rp 2.200.000</span></li>
-                            <li><span style="font-weight: 600;">300 Pack</span> <span class="price">Rp 2.550.000</span></li>
+                        <ul class="pack-list-mini" style="margin-bottom: 25px;">
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">50 Pack</span> <span class="price">Rp 1.200.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">100 Pack</span> <span class="price">Rp 1.500.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">150 Pack</span> <span class="price">Rp 1.900.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">200 Pack</span> <span class="price">Rp 2.200.000</span></li>
+                            <li style="justify-content: space-between; padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">300 Pack</span> <span class="price">Rp 2.550.000</span></li>
                         </ul>
                         
-                        <div class="sub-category-title">FASILITAS PAKET</div>
-                        <ul class="pack-list-mini" style="margin-top: 10px;">
+                        <div class="pack-preview-title"><i class="fas fa-gift"></i> FASILITAS PAKET</div>
+                        <ul class="pack-list-mini">
                             <li><i class="fas fa-check-circle"></i> 1 Print 4R / Peserta</li>
                             <li><i class="fas fa-check-circle"></i> Fast photo editing & Fast Printing</li>
                             <li><i class="fas fa-check-circle"></i> Desain overlay (digital frame) custom tema acara</li>
@@ -67,7 +137,7 @@
                             <li><i class="fas fa-check-circle"></i> Durasi standby 3 jam per acara</li>
                             <li><i class="fas fa-check-circle"></i> Set Kamera, Laptop & Lighting Studio</li>
                             <li><i class="fas fa-check-circle"></i> Flashdisk Softcopy Photobooth</li>
-                            <li><i class="fas fa-qrcode"></i> Google Drive & Live QR Cloud Sharing (Powered by mybooth.id)</li>
+                            <li><i class="fas fa-qrcode"></i> Google Drive & Live QR Cloud Sharing</li>
                             <li><i class="fas fa-gift"></i> <strong>FREE</strong> Basic Decoration & Video Slide Show</li>
                         </ul>
                         <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Quota</a>
@@ -75,24 +145,28 @@
                 </div>
             </div>
 
+            <!-- Card Photobooth Unlimited -->
             <div class="price-card">
                 <div class="badge-popular">Best Seller 🔥</div>
-                <div class="card-header" style="background-color: #f4fbfb;">
+                <!-- Tambahan Thumbnail Foto untuk Unlimited Package -->
+                <img class="card-cover" src="koleksi_foto/event/photobooth-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1530103862676-de8892b126fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Photobooth Unlimited">
+                <div class="card-header" style="background-color: var(--accent-light);">
                     <h3>2. Unlimited Package</h3>
                     <p class="desc">Bebas cetak foto sepuasnya selama durasi acara. Pilihan terbaik untuk event meriah.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper" style="max-height: none;">
+                <div class="card-details-wrapper">
                     <div class="packages">
-                        <ul class="pack-list-detail extra-list-style" style="margin-top: 0; margin-bottom: 25px;">
-                            <li><span style="font-weight: 600;">1 Jam Unlimited</span> <span class="price">Rp 2.000.000</span></li>
-                            <li><span style="font-weight: 600;">2 Jam Unlimited</span> <span class="price">Rp 2.900.000</span></li>
-                            <li><span style="font-weight: 600;">3 Jam Unlimited</span> <span class="price">Rp 3.200.000</span></li>
-                            <li><span style="font-weight: 600;">4 Jam Unlimited</span> <span class="price">Rp 3.900.000</span></li>
-                            <li><span style="font-weight: 600;">5 Jam Unlimited</span> <span class="price">Rp 4.200.000</span></li>
+                        <ul class="pack-list-mini" style="margin-bottom: 25px;">
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">1 Jam Unlimited</span> <span class="price">Rp 2.000.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">2 Jam Unlimited</span> <span class="price">Rp 2.900.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">3 Jam Unlimited</span> <span class="price">Rp 3.200.000</span></li>
+                            <li style="justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">4 Jam Unlimited</span> <span class="price">Rp 3.900.000</span></li>
+                            <li style="justify-content: space-between; padding-bottom: 10px;"><span style="font-weight: 600; color: var(--text-dark);">5 Jam Unlimited</span> <span class="price">Rp 4.200.000</span></li>
                         </ul>
                         
-                        <div class="sub-category-title">FASILITAS PAKET</div>
-                        <ul class="pack-list-mini" style="margin-top: 10px;">
+                        <div class="pack-preview-title"><i class="fas fa-gift"></i> FASILITAS PAKET</div>
+                        <ul class="pack-list-mini">
                             <li><i class="fas fa-check-circle"></i> <strong>UNLIMITED</strong> Print 4R / Peserta</li>
                             <li><i class="fas fa-check-circle"></i> Fast photo editing & Fast Printing</li>
                             <li><i class="fas fa-check-circle"></i> Desain overlay (digital frame) custom tema acara</li>
@@ -101,7 +175,7 @@
                             <li><i class="fas fa-check-circle"></i> Durasi standby sesuai paket yang dipilih</li>
                             <li><i class="fas fa-check-circle"></i> Set Kamera, Laptop & Lighting Studio</li>
                             <li><i class="fas fa-check-circle"></i> Flashdisk Softcopy Photobooth</li>
-                            <li><i class="fas fa-qrcode"></i> Google Drive & Live QR Cloud Sharing (Powered by mybooth.id)</li>
+                            <li><i class="fas fa-qrcode"></i> Google Drive & Live QR Cloud Sharing</li>
                             <li><i class="fas fa-gift"></i> <strong>FREE</strong> Basic Decoration & Video Slide Show</li>
                         </ul>
                         <a href="booking.html" class="btn-book-pack"><i class="fas fa-calendar-check"></i> Pesan Paket Unlimited</a>
@@ -112,27 +186,31 @@
         </div>
     </section>
 
+    <!-- ================= EVENT DOCUMENTATION ================= -->
     <section class="price-section" style="padding-top: 40px;">
-        <h2 class="category-main-title"><i class="fas fa-video"></i> OUTDOOR & EVENT DOCUMENTATION</h2>
-        <p style="text-align: center; color: #666; margin-top: -30px; margin-bottom: 40px;">Mengabadikan setiap detik berharga pada acara Ulang Tahun, Peresmian, Corporate Gathering, family ghatering, Bridal Shower, atau Pesta Pribadi Anda.</p>
+        <h2 class="category-main-title"><i class="fas fa-video"></i> EVENT DOCUMENTATION</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Mengabadikan setiap detik berharga pada acara Ulang Tahun, Peresmian, Corporate Gathering, Bridal Shower, atau Pesta Pribadi Anda.
+        </p>
         
-        <div class="price-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="price-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
             
             <div class="price-card">
-                <img class="card-cover" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event Photography">
+                <img class="card-cover" src="outdoor1.jpg" alt="Event Photography">
                 <div class="card-header">
                     <h3>Paket Essential (Photo Only)</h3>
                     <p class="desc">Fokus pada tangkapan foto momen-momen natural dan candid selama acara berlangsung.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper" style="max-height: none;">
+                <div class="card-details-wrapper">
                     <div class="packages">
-                        <div class="pack-item highlight-pack" style="padding: 15px;">
+                        <div class="pack-item highlight-pack">
                             <div class="pack-name-price"><h4>3 JAM STANDBY</h4><span class="price highlight-price">Rp 1.500.000</span></div>
                         </div>
                         <ul class="pack-list-mini" style="margin-top: 15px;">
                             <li><i class="fas fa-user-tie"></i> 1 Profesional Fotografer</li>
                             <li><i class="fas fa-camera"></i> Unlimited Shoot selama durasi</li>
-                            <li><i class="fas fa-sliders-h"></i> All ediitng photo</li>
+                            <li><i class="fas fa-sliders-h"></i> All editing photo</li>
                             <li><i class="fas fa-cloud-download-alt"></i> Semua master file diberikan via Google Drive</li>
                             <li><i class="fas fa-car"></i> <strong>FREE Transport</strong> (Khusus area Salatiga)</li>
                         </ul>
@@ -144,14 +222,15 @@
 
             <div class="price-card">
                 <div class="badge-popular rec">Highly Recommended ✨</div>
-                <img class="card-cover" src="https://images.unsplash.com/photo-1533174000243-cb7249826f49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event Videography">
+                <img class="card-cover" src="outdoor2.jpg" alt="Event Videography">
                 <div class="card-header">
                     <h3>Paket Cinematic (Photo + Video)</h3>
                     <p class="desc">Dokumentasi foto lengkap ditambah dengan video highlight cinematic beresolusi tinggi.</p>
+                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
                 </div>
-                <div class="card-details-wrapper" style="max-height: none;">
+                <div class="card-details-wrapper">
                     <div class="packages">
-                        <div class="pack-item highlight-pack" style="padding: 15px;">
+                        <div class="pack-item highlight-pack">
                             <div class="pack-name-price"><h4>3 JAM STANDBY</h4><span class="price highlight-price">Rp 1.950.000</span></div>
                         </div>
                         <ul class="pack-list-mini" style="margin-top: 15px;">
@@ -169,17 +248,64 @@
             </div>
 
         </div>
+    </section>
 
-        <div class="tnc-section" style="margin-top: 50px;">
+    <!-- ================= GALERI FOTO & VIDEO EVENT (BARU) ================= -->
+    <section class="event-gallery-section">
+        <h2 class="category-main-title"><i class="fas fa-play-circle"></i> Momen Event Terbaik</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 10px;">
+            Intip cuplikan kemeriahan acara dan keseruan Photobooth yang telah kami abadikan.
+        </p>
+        
+        <!-- Area Kolase Masonry -->
+        <div class="masonry-grid">
+            
+            <!-- Contoh Foto 1 -->
+            <img src="koleksi_foto/event/galeri1.jpg" onerror="this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" class="masonry-item" alt="Momen Event">
+            
+            <!-- Contoh Video 1 -->
+            <div class="video-wrapper masonry-item">
+                <i class="fas fa-video video-icon"></i>
+                <video width="100%" height="auto" autoplay loop muted playsinline style="border-radius: 12px; display: block;">
+                    <!-- Masukkan file video Anda di sini -->
+                    <source src="koleksi_foto/event/video1.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <!-- Contoh Foto 2 -->
+            <img src="koleksi_foto/event/galeri2.jpg" onerror="this.src='https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" class="masonry-item" alt="Momen Event">
+
+            <!-- Contoh Foto 3 -->
+            <img src="koleksi_foto/event/galeri3.jpg" onerror="this.src='https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" class="masonry-item" alt="Photobooth">
+
+            <!-- Contoh Video 2 -->
+            <div class="video-wrapper masonry-item">
+                <i class="fas fa-video video-icon"></i>
+                <video width="100%" height="auto" autoplay loop muted playsinline style="border-radius: 12px; display: block;">
+                    <!-- Masukkan file video Anda di sini -->
+                    <source src="koleksi_foto/event/video2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Contoh Foto 4 -->
+            <img src="koleksi_foto/event/galeri4.jpg" onerror="this.src='https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" class="masonry-item" alt="Keseruan Pesta">
+
+        </div>
+    </section>
+
+    <!-- ================= SYARAT & KETENTUAN ================= -->
+    <section class="price-section" style="padding-top: 20px;">
+        <div class="tnc-section" style="margin-top: 0;">
             <h3><i class="fas fa-info-circle"></i> Syarat & Ketentuan Event</h3>
             <ul class="tnc-list">
-                <li><i class="fas fa-check"></i> Layanan ini tidak berlaku untuk acara Wedding/Pernikahan.</li>
-                <li><i class="fas fa-check"></i> Biaya transportasi tambahan berlaku untuk event di luar wilayah kota Salatiga.</li>
-                <li><i class="fas fa-check"></i> Down Payment (DP) minimal 50% untuk *lock* tanggal dan kru.</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Layanan ini tidak berlaku untuk acara Wedding/Pernikahan.</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Biaya transportasi tambahan berlaku untuk event di luar wilayah kota Salatiga.</li>
+                <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Down Payment (DP) minimal 50% untuk *lock* tanggal dan kru.</li>
             </ul>
         </div>
     </section>
 
+    <!-- ================= FOOTER ================= -->
     <footer id="kontak" class="footer">
         <div class="footer-top">
             <h2>Lensa Story Studio</h2>
@@ -195,15 +321,35 @@
         </div>
     </footer>
 
+    <!-- ================= JAVASCRIPT ================= -->
     <script>
+        // SCRIPT ACCORDION (TOGGLE DETAIL PAKET)
+        document.querySelectorAll('.btn-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.price-card');
+                const wrapper = card.querySelector('.card-details-wrapper');
+                const icon = this.querySelector('i');
+
+                // Jika ingin membuat accordion lain otomatis tertutup saat satu dibuka, bisa tambahkan logika disini
+
+                if (wrapper.style.maxHeight) {
+                    wrapper.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                    this.innerHTML = 'Lihat Detail Paket <i class="fas fa-chevron-down"></i>';
+                } else {
+                    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                    this.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
+                }
+            });
+        });
+
+        // SCRIPT NAVIGATION HAMBURGER MENU (MOBILE)
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
-            // Membuka atau menutup sidebar menu
             navLinks.classList.toggle('active');
-            
-            // Mengganti ikon garis tiga (bars) menjadi silang (times)
             const icon = mobileMenu.querySelector('i');
             if(navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
