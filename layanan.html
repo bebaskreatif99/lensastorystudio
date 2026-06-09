@@ -21,7 +21,7 @@
             margin-bottom: 30px;
         }
 
-        /* Quick Access (Pintasan) */
+        /* Quick Access (Pintasan) - DESAIN UMUM/DEKSTOP */
         .quick-access-wrapper {
             padding: 0 5%;
             margin-bottom: 40px;
@@ -50,11 +50,11 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
         .btn-quick:hover {
-            background-color: var(--primary, #0f766e);
+            background-color: var(--primary, #00433f);
             color: #fff;
-            border-color: var(--primary, #0f766e);
+            border-color: var(--primary, #00433f);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(15, 118, 110, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 67, 63, 0.2);
         }
 
         /* Grid Layout (Lebih Rapat & Proporsional) */
@@ -68,7 +68,7 @@
             color: var(--text-dark, #1e293b);
             margin-bottom: 25px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary, #0f766e);
+            border-bottom: 2px solid var(--primary, #00433f);
             display: inline-block;
         }
         .price-grid {
@@ -96,7 +96,7 @@
         }
         .card-cover {
             width: 100%;
-            height: 180px; /* Diperkecil agar tidak memenuhi layar */
+            height: 180px;
             object-fit: cover;
             border-bottom: 3px solid var(--accent, #C5A880);
         }
@@ -135,7 +135,7 @@
             width: 100%;
             padding: 10px;
             background: var(--form-bg, #f1f5f9);
-            color: var(--primary, #0f766e);
+            color: var(--primary, #00433f);
             border: 1px solid var(--border-color, #e2e8f0);
             border-radius: 8px;
             font-weight: 600;
@@ -145,15 +145,15 @@
             display: flex; justify-content: center; align-items: center; gap: 8px;
         }
         .btn-toggle:hover {
-            background: var(--primary-light, #e0f2fe);
-            border-color: var(--primary, #0f766e);
+            background: #e0f2fe;
+            border-color: var(--primary, #00433f);
         }
 
         /* Card Details (Accordion) */
         .card-details-wrapper {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
+            transition: max-height 0.5s ease-in-out;
             background: #fafafa;
         }
         .packages { padding: 0 20px 20px; }
@@ -196,28 +196,52 @@
         /* Booking Button */
         .btn-book-pack {
             display: block; width: 100%; text-align: center;
-            background: var(--wa-color, #25D366); color: #fff;
+            background: #25D366; color: #fff;
             padding: 12px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
             transition: 0.3s; margin-top: 15px; text-decoration: none;
         }
         .btn-book-pack:hover { background: #1ebc59; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
 
         .highlight-card-effect {
-            border-color: var(--primary) !important;
-            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15) !important;
+            border-color: var(--primary, #00433f) !important;
+            box-shadow: 0 0 0 6px rgba(0, 67, 63, 0.2) !important;
+            transform: scale(1.02);
+            transition: all 0.4s ease-out;
         }
 
-        /* Responsif Mobile */
+        /* =========================================
+           RESPONSIF MOBILE (KHUSUS HP)
+           ========================================= */
         @media (max-width: 768px) {
+            /* Perombakan Tombol Quick Access di HP */
+            .quick-access-wrapper { padding: 0 10px; margin-bottom: 30px; }
+            
+            /* Menggunakan Grid agar tertata rapi otomatis */
             .quick-access-container { 
-                flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; 
-                padding-bottom: 10px; scroll-behavior: smooth;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Mengecilkan ukuran minimum agar muat banyak */
+                gap: 8px;
+                justify-content: center;
             }
-            .quick-access-container::-webkit-scrollbar { height: 4px; }
-            .quick-access-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-            .btn-quick { flex-shrink: 0; white-space: nowrap; }
+            
+            /* Menyesuaikan ukuran tombol di HP */
+            .btn-quick { 
+                padding: 6px 8px; 
+                font-size: 0.75rem; /* Font lebih kecil */
+                justify-content: center; /* Teks di tengah */
+                border-radius: 6px; /* Sudut sedikit kotak agar rapi */
+                text-align: center;
+            }
+            
+            /* Menyembunyikan Icon di HP agar teks muat dalam 1 baris */
+            .btn-quick i { display: none; } 
+
             .price-grid { grid-template-columns: 1fr; gap: 20px; }
             .card-cover { height: 160px; }
+            
+            /* Mengecilkan header text sedikit */
+            .page-header h1 { font-size: 1.8rem !important; }
+            .page-header { padding-top: 40px; padding-bottom: 30px; }
         }
     </style>
 </head>
@@ -250,11 +274,13 @@
         <p style="color: var(--text-muted); font-size: 1rem;">Pilih paket terbaik untuk mengabadikan momen berhargamu.</p>
     </div>
 
+    <!-- TABS STUDIO SELECTOR -->
     <div class="studio-selector" id="studio-selector-container" style="margin-bottom: 25px;">
         <button id="btn-studio1" class="btn-studio active" onclick="gantiStudioLayanan('studio1')"><i class="fas fa-store"></i> Studio 1 (Grogol)</button>
         <button id="btn-studio2" class="btn-studio" onclick="gantiStudioLayanan('studio2')"><i class="fas fa-store"></i> Studio 2 (Pabelan)</button>
     </div>
 
+    <!-- QUICK ACCESS DI HALAMAN LAYANAN (SEKARANG RAPI DI HP) -->
     <div class="quick-access-wrapper">
         <div class="quick-access-container">
             <button class="btn-quick" onclick="scrollToCategory('selfphoto')"><i class="fas fa-camera-retro"></i> Self Photo</button>
@@ -270,6 +296,7 @@
         </div>
     </div>
 
+    <!-- ================= CONTENT STUDIO 1 ================= -->
     <section class="price-section" id="content-studio1">
         <h2 class="category-main-title"><i class="fas fa-camera"></i> SELF PHOTO STUDIO</h2>
         <div class="price-grid">
@@ -460,7 +487,7 @@
             </div>
 
             <div class="price-card">
-                <img class="card-cover" data-kategori="passphoto" src="" alt="Cover Pass Photo">
+                <img class="card-cover" data-kategori="passphoto" src="" alt="Cover Pas Photo">
                 <div class="card-header">
                     <h3>Pas Photo & Personal</h3>
                     <p class="desc">Kebutuhan foto resmi dokumen dan potret personal profesional.</p>
@@ -476,7 +503,7 @@
                             </ul>
                         </div>
                         <div class="pack-item">
-                            <div class="pack-name-price"><h4>PAS PHOTO COUPLE</h4><span class="price">Rp 50.000</span></div>
+                            <div class="pack-name-price"><h4>PASS PHOTO COUPLE</h4><span class="price">Rp 50.000</span></div>
                             <ul class="pack-list-mini">
                                 <li><i class="fas fa-users"></i> 2 Orang | Termasuk Fotografer</li>
                                 <li><i class="fas fa-print"></i> Free 1 Cetak | All Digital File</li>
@@ -547,7 +574,7 @@
                         <div class="pack-item" style="margin-top: 0;">
                             <div class="pack-name-price"><h4>GRAD GOLD</h4><span class="price">Rp 500.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-10 Orang</li>
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-10 Person</li>
                                 <li><i class="fas fa-palette"></i> 3 Tema | Semua File Hasil Edit</li>
                                 <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
                             </ul>
@@ -555,7 +582,7 @@
                         <div class="pack-item">
                             <div class="pack-name-price"><h4>GRAD SILVER</h4><span class="price">Rp 350.000</span></div>
                             <ul class="pack-list-mini">
-                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-5 Orang</li>
+                                <li><i class="fas fa-hourglass-half"></i> Waktu Fleksibel | 1-5 Person</li>
                                 <li><i class="fas fa-palette"></i> 1 Tema | Semua File Hasil Edit</li>
                                 <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
                             </ul>
@@ -692,6 +719,7 @@
         </div>
     </section>
 
+    <!-- ================= CONTENT STUDIO 2 ================= -->
     <section class="price-section" id="content-studio2" style="display: none;">
         <h2 class="category-main-title"><i class="fas fa-camera"></i> SELF PHOTO STUDIO</h2>
         <div class="price-grid">
@@ -979,42 +1007,6 @@
                 </div>
             </div>
 
-            <div class="price-card">
-                <img class="card-cover" data-kategori="birthday" src="" alt="Cover Birthday">
-                <div class="card-header">
-                    <h3>Birthday Photo</h3>
-                    <p class="desc">Jadikan perayaan hari pertambahan usia Anda terdokumentasi sempurna.</p>
-                    <button class="btn-toggle">Lihat Detail Paket <i class="fas fa-chevron-down"></i></button>
-                </div>
-                <div class="card-details-wrapper">
-                    <div class="packages">
-                        <div class="pack-item">
-                            <div class="pack-name-price"><h4>GOLD PACKAGE</h4><span class="price">Rp 500.000</span></div>
-                            <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi Panjang 40 Menit | 1-10 Orang</li>
-                                <li><i class="fas fa-adjust"></i> 2 Tema Kustomisasi | Semua File Diedit</li>
-                                <li><i class="fas fa-print"></i> 4 Cetak 4R & 2 Cetak 10R</li>
-                            </ul>
-                        </div>
-                        <div class="pack-item">
-                            <div class="pack-name-price"><h4>SILVER PACKAGE</h4><span class="price">Rp 350.000</span></div>
-                            <ul class="pack-list-mini">
-                                <li><i class="fas fa-clock"></i> Sesi Ringkas 20 Menit | 1-5 Orang</li>
-                                <li><i class="fas fa-adjust"></i> 1 Tema Pilihan | Semua File Diedit</li>
-                                <li><i class="fas fa-print"></i> 2 Cetak 4R & 1 Cetak 10R</li>
-                            </ul>
-                        </div>
-                        <div class="pack-preview-title"><i class="fas fa-images"></i> Pratinjau Hasil Foto</div>
-                        <div class="pack-preview-grid">
-                            <img src="" class="preview-img" alt="Preview">
-                            <img src="" class="preview-img" alt="Preview">
-                            <img src="" class="preview-img" alt="Preview">
-                        </div>
-                        <a href="booking.html" class="btn-book-pack"><i class="fab fa-whatsapp"></i> Reservasi Sekarang</a>
-                    </div>
-                </div>
-            </div>
-
             <div class="price-card" style="justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1;">
                 <div class="card-header" style="background: transparent; align-items: center; text-align: center;">
                     <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
@@ -1079,114 +1071,150 @@
     </footer>
 
     <script>
-        // Database Link ImgBB 
+        // Database dari ImgBB yang digunakan di seluruh file
         const imgbbData = {
             "studio1": {
                 "birthday": [
                     "https://i.ibb.co.com/BHHkhS47/1.jpg", "https://i.ibb.co.com/mFgdGHpJ/2.jpg", "https://i.ibb.co.com/dwgXKNsd/3.jpg",
-                    "https://i.ibb.co.com/Pvt1mymW/4.jpg", "https://i.ibb.co.com/Y78x4CXG/5.jpg", "https://i.ibb.co.com/5h0Lz7wX/6.jpg"
+                    "https://i.ibb.co.com/Pvt1mymW/4.jpg", "https://i.ibb.co.com/Y78x4CXG/5.jpg", "https://i.ibb.co.com/5h0Lz7wX/6.jpg",
+                    "https://i.ibb.co.com/gF69VsyS/7.jpg", "https://i.ibb.co.com/679zzs66/8.jpg", "https://i.ibb.co.com/W4hhMCvc/9.jpg",
+                    "https://i.ibb.co.com/VcwBwL3y/10.jpg", "https://i.ibb.co.com/fRkfj57/11.jpg", "https://i.ibb.co.com/4RKDH2Sn/12.jpg"
                 ],
                 "creativebox": [
                     "https://i.ibb.co.com/CKm8WfDd/1.jpg", "https://i.ibb.co.com/XrR9QbZ7/2.jpg", "https://i.ibb.co.com/tMKprBxJ/3.jpg",
-                    "https://i.ibb.co.com/FbqPsbRY/4.jpg"
+                    "https://i.ibb.co.com/FbqPsbRY/4.jpg", "https://i.ibb.co.com/ccyhb3HF/5.jpg", "https://i.ibb.co.com/hR5XM7NT/6.jpg",
+                    "https://i.ibb.co.com/B5mN6svS/7.jpg"
                 ],
                 "creativeselfie": [
                     "https://i.ibb.co.com/svcvcgNX/1.jpg", "https://i.ibb.co.com/3Y9PrfT3/2.jpg", "https://i.ibb.co.com/Z6Kykycs/3.jpg",
-                    "https://i.ibb.co.com/ccgKkh9j/4.jpg", "https://i.ibb.co.com/hFJ6Gf9K/5.jpg"
+                    "https://i.ibb.co.com/ccgKkh9j/4.jpg", "https://i.ibb.co.com/hFJ6Gf9K/5.jpg", "https://i.ibb.co.com/39G7SXHj/6.jpg",
+                    "https://i.ibb.co.com/KzSYhYCJ/7.jpg", "https://i.ibb.co.com/tPYcbDD8/8.jpg", "https://i.ibb.co.com/pjwb9xsm/9.jpg",
+                    "https://i.ibb.co.com/8SpwNVk/10.jpg", "https://i.ibb.co.com/sv6bBtbw/11.jpg", "https://i.ibb.co.com/XxkZvk8f/12.jpg",
+                    "https://i.ibb.co.com/PvHbWm26/13.jpg", "https://i.ibb.co.com/XfLbCdMc/14.jpg", "https://i.ibb.co.com/7ffJvwT/15.jpg",
+                    "https://i.ibb.co.com/0y540Cq9/16.jpg", "https://i.ibb.co.com/fGZYq5bT/17.jpg", "https://i.ibb.co.com/QvvDbm8j/18.jpg",
+                    "https://i.ibb.co.com/Z6sFtcMD/19.jpg", "https://i.ibb.co.com/Kz8sxztN/20.jpg"
                 ],
                 "family": [
                     "https://i.ibb.co.com/v6XtPTCF/1.jpg", "https://i.ibb.co.com/YTVq0PPL/2.jpg", "https://i.ibb.co.com/JwTzttzt/3.jpg",
-                    "https://i.ibb.co.com/Q3G7sxhC/4.jpg", "https://i.ibb.co.com/hJjvgvTR/5.jpg", "https://i.ibb.co.com/KxXj1GKG/6.jpg"
+                    "https://i.ibb.co.com/Q3G7sxhC/4.jpg", "https://i.ibb.co.com/hJjvgvTR/5.jpg", "https://i.ibb.co.com/KxXj1GKG/6.jpg",
+                    "https://i.ibb.co.com/0pfbv534/7.jpg", "https://i.ibb.co.com/j9037bp6/8.jpg", "https://i.ibb.co.com/hxbT0bqy/9.jpg",
+                    "https://i.ibb.co.com/TxcZfTWy/10.jpg", "https://i.ibb.co.com/Sw77mGDJ/11.jpg", "https://i.ibb.co.com/zTrhtkXN/12.jpg",
+                    "https://i.ibb.co.com/6R8k8Wtt/13.jpg", "https://i.ibb.co.com/nXgVD8q/14.jpg", "https://i.ibb.co.com/Lhv2Y4Yn/15.jpg",
+                    "https://i.ibb.co.com/LX7hDPLk/16.jpg", "https://i.ibb.co.com/N6Tgbpr5/17.jpg"
                 ],
                 "graduation": [
                     "https://i.ibb.co.com/spXnmVfR/1.jpg", "https://i.ibb.co.com/kT41Bpc/2.jpg", "https://i.ibb.co.com/mrNWvftZ/3.jpg",
-                    "https://i.ibb.co.com/WXK8QVG/4.jpg", "https://i.ibb.co.com/PGYgQZ53/5.jpg", "https://i.ibb.co.com/S4CnN3ds/6.jpg"
+                    "https://i.ibb.co.com/WXK8QVG/4.jpg", "https://i.ibb.co.com/PGYgQZ53/5.jpg", "https://i.ibb.co.com/S4CnN3ds/6.jpg",
+                    "https://i.ibb.co.com/whSSCZwX/7.jpg", "https://i.ibb.co.com/0RcMsqvd/8.jpg", "https://i.ibb.co.com/RGgN0T9R/9.jpg",
+                    "https://i.ibb.co.com/8D0dm4LL/10.jpg", "https://i.ibb.co.com/nsb9sXTj/11.jpg", "https://i.ibb.co.com/chyk1KWw/12.jpg",
+                    "https://i.ibb.co.com/20ShV92z/13.jpg", "https://i.ibb.co.com/yBPq6cRH/14.jpg", "https://i.ibb.co.com/wNJfjYyg/15.jpg",
+                    "https://i.ibb.co.com/N6H0kXRm/16.jpg", "https://i.ibb.co.com/RpfWvFnr/17.jpg", "https://i.ibb.co.com/v6PSDSwT/18.jpg",
+                    "https://i.ibb.co.com/mC4cWH1d/19.jpg", "https://i.ibb.co.com/gMjVZdwG/20.jpg", "https://i.ibb.co.com/gF9Htdnh/21.jpg",
+                    "https://i.ibb.co.com/dwjGXgHP/22.jpg"
                 ],
                 "maternity": [
                     "https://i.ibb.co.com/Ps5VHhpk/1.jpg", "https://i.ibb.co.com/8gr0X9Zr/2.jpg", "https://i.ibb.co.com/vxvvQHZv/3.jpg",
-                    "https://i.ibb.co.com/QFZwDdpG/4.jpg", "https://i.ibb.co.com/bMHJj3t3/5.jpg"
+                    "https://i.ibb.co.com/QFZwDdpG/4.jpg", "https://i.ibb.co.com/bMHJj3t3/5.jpg", "https://i.ibb.co.com/v4g3by38/6.jpg",
+                    "https://i.ibb.co.com/ghVK1dj/7.jpg", "https://i.ibb.co.com/jZf1nr7V/8.jpg", "https://i.ibb.co.com/LzpL43Jc/9.jpg",
+                    "https://i.ibb.co.com/8nhDbbVr/10.jpg", "https://i.ibb.co.com/5XcBVhp2/11.jpg", "https://i.ibb.co.com/zH6jKGxM/12.jpg",
+                    "https://i.ibb.co.com/gx6n5bs/13.jpg", "https://i.ibb.co.com/tpkcTGk4/14.jpg", "https://i.ibb.co.com/zHxZxK1m/15.jpg",
+                    "https://i.ibb.co.com/CKzWx20R/16.jpg", "https://i.ibb.co.com/MDxKTdPB/17.jpg", "https://i.ibb.co.com/zpG2H6v/18.jpg",
+                    "https://i.ibb.co.com/C3QTGJ93/19.jpg", "https://i.ibb.co.com/tTDrnwPD/20.jpg"
                 ],
                 "prewedding": [
                     "https://i.ibb.co.com/rfT9N63s/1.jpg", "https://i.ibb.co.com/Y7xLJNhS/2.jpg", "https://i.ibb.co.com/mVMhhtrD/3.jpg",
-                    "https://i.ibb.co.com/vCSkKyt1/4.jpg", "https://i.ibb.co.com/gHWCzJ6/5.jpg"
+                    "https://i.ibb.co.com/vCSkKyt1/4.jpg", "https://i.ibb.co.com/gHWCzJ6/5.jpg", "https://i.ibb.co.com/Qv8FJ3jh/6.jpg",
+                    "https://i.ibb.co.com/mr6Mb7Kd/7.jpg", "https://i.ibb.co.com/LD5PnRxB/8.jpg", "https://i.ibb.co.com/zhtbxg7m/9.jpg",
+                    "https://i.ibb.co.com/69YSGwD/10.jpg", "https://i.ibb.co.com/BHVcHcCZ/11.jpg", "https://i.ibb.co.com/WpRwybdN/12.jpg",
+                    "https://i.ibb.co.com/yBQqLHrV/13.jpg", "https://i.ibb.co.com/xtcn01zC/14.jpg", "https://i.ibb.co.com/d0MkJYHF/15.jpg",
+                    "https://i.ibb.co.com/F4HxTRFY/16.jpg", "https://i.ibb.co.com/nMxHyw5G/17.jpg", "https://i.ibb.co.com/jkC44LjJ/18.jpg"
                 ],
                 "selfphoto": [
                     "https://i.ibb.co.com/Xf2ZZ1tn/1.jpg", "https://i.ibb.co.com/MDs5mghZ/2.jpg", "https://i.ibb.co.com/0pwWxs50/3.jpg",
-                    "https://i.ibb.co.com/QzZ1vk7/4.jpg", "https://i.ibb.co.com/xSrS5Tj4/5.jpg", "https://i.ibb.co.com/hJkJrzrV/6.jpg"
-                ],
-                "group": [
-                    "https://i.ibb.co.com/v6XtPTCF/1.jpg", "https://i.ibb.co.com/YTVq0PPL/2.jpg", "https://i.ibb.co.com/JwTzttzt/3.jpg" // Dummy pakai family agar tidak kosong
-                ],
-                "passphoto": [] // Kosongkan agar pakai placeholder
+                    "https://i.ibb.co.com/QzZ1vk7/4.jpg", "https://i.ibb.co.com/xSrS5Tj4/5.jpg", "https://i.ibb.co.com/hJkJrzrV/6.jpg",
+                    "https://i.ibb.co.com/hxBBY9kf/7.jpg", "https://i.ibb.co.com/WWgsT6B0/8.jpg", "https://i.ibb.co.com/LX8SvmqY/9.jpg",
+                    "https://i.ibb.co.com/84SgTKbP/10.jpg", "https://i.ibb.co.com/mV9N1zt9/11.jpg", "https://i.ibb.co.com/sJsGzZ08/12.jpg",
+                    "https://i.ibb.co.com/YBtnSWQd/13.jpg", "https://i.ibb.co.com/4ZJVqq4t/14.jpg", "https://i.ibb.co.com/FqXGTHs1/15.jpg",
+                    "https://i.ibb.co.com/DgbB1rdt/16.jpg", "https://i.ibb.co.com/Y46KxqkD/17.jpg", "https://i.ibb.co.com/ycN1xGfK/18.jpg",
+                    "https://i.ibb.co.com/Z6LYgMvx/19.jpg", "https://i.ibb.co.com/HLj4MYHY/20.jpg", "https://i.ibb.co.com/TMQQT8RM/21.jpg"
+                ]
             },
             "studio2": {
                 "family": [
                     "https://i.ibb.co.com/Df9L1BSg/1.jpg", "https://i.ibb.co.com/zhphdydY/2.jpg", "https://i.ibb.co.com/rGDCB532/3.jpg",
-                    "https://i.ibb.co.com/2GshmXq/4.jpg", "https://i.ibb.co.com/yBM85Tyd/5.jpg"
+                    "https://i.ibb.co.com/2GshmXq/4.jpg", "https://i.ibb.co.com/yBM85Tyd/5.jpg", "https://i.ibb.co.com/fYYxBcdn/6.jpg",
+                    "https://i.ibb.co.com/xqwwqx8n/7.jpg", "https://i.ibb.co.com/QFzfCNwY/8.jpg", "https://i.ibb.co.com/67p3qrKN/9.jpg",
+                    "https://i.ibb.co.com/SDL9prbD/10.jpg", "https://i.ibb.co.com/7Jqw37B1/11.jpg", "https://i.ibb.co.com/bRBHLVxN/12.jpg",
+                    "https://i.ibb.co.com/TBMvymj4/13.jpg", "https://i.ibb.co.com/dwsm279z/14.jpg", "https://i.ibb.co.com/Nny7ntvC/15.jpg",
+                    "https://i.ibb.co.com/xqmzddHq/16.jpg"
                 ],
                 "graduation": [
                     "https://i.ibb.co.com/tPM7BJSH/1.jpg", "https://i.ibb.co.com/cBDph8k/2.jpg", "https://i.ibb.co.com/S4J1fSW2/3.jpg",
-                    "https://i.ibb.co.com/KtftRQ2/4.jpg", "https://i.ibb.co.com/V0P1Fz72/5.jpg"
+                    "https://i.ibb.co.com/KtftRQ2/4.jpg", "https://i.ibb.co.com/V0P1Fz72/5.jpg", "https://i.ibb.co.com/Y40YcgpD/6.jpg",
+                    "https://i.ibb.co.com/W8HNHkS/7.jpg", "https://i.ibb.co.com/0j86tXSN/8.jpg", "https://i.ibb.co.com/kVFmLY39/9.jpg",
+                    "https://i.ibb.co.com/zVdffFMV/10.jpg", "https://i.ibb.co.com/yFvxcF1c/11.jpg", "https://i.ibb.co.com/35Rs37yT/12.jpg",
+                    "https://i.ibb.co.com/M57h7xLP/13.jpg", "https://i.ibb.co.com/Hf5bLzz6/14.jpg", "https://i.ibb.co.com/JWtp7RWL/15.jpg",
+                    "https://i.ibb.co.com/yFZZk201/16.jpg", "https://i.ibb.co.com/0pYphspY/17.jpg", "https://i.ibb.co.com/VdNvnQb/18.jpg",
+                    "https://i.ibb.co.com/67T8mxHs/19.jpg"
                 ],
                 "group": [
-                    "https://i.ibb.co.com/5gsC8dzF/1.jpg", "https://i.ibb.co.com/GfGxjvr8/2.jpg", "https://i.ibb.co.com/5gkQ6g7b/3.jpg"
+                    "https://i.ibb.co.com/5gsC8dzF/1.jpg", "https://i.ibb.co.com/GfGxjvr8/2.jpg", "https://i.ibb.co.com/5gkQ6g7b/3.jpg",
+                    "https://i.ibb.co.com/RGHsjML7/4.jpg", "https://i.ibb.co.com/zHfg6Gww/5.jpg", "https://i.ibb.co.com/bVRwFhJ/6.jpg",
+                    "https://i.ibb.co.com/whRm36nT/7.jpg"
                 ],
                 "maternity": [
-                    "https://i.ibb.co.com/qMqT70Nk/1.jpg", "https://i.ibb.co.com/67CMc6P8/2.jpg", "https://i.ibb.co.com/Y4QrFcF6/3.jpg"
+                    "https://i.ibb.co.com/qMqT70Nk/1.jpg", "https://i.ibb.co.com/67CMc6P8/2.jpg", "https://i.ibb.co.com/Y4QrFcF6/3.jpg",
+                    "https://i.ibb.co.com/rK42SSBs/4.jpg", "https://i.ibb.co.com/Vc8YFnps/5.jpg", "https://i.ibb.co.com/q3wnt1fF/6.jpg",
+                    "https://i.ibb.co.com/ynPfZgJk/7.jpg", "https://i.ibb.co.com/C5FBpNvb/8.jpg", "https://i.ibb.co.com/q32fQyPk/9.jpg"
                 ],
                 "selfphoto": [
                     "https://i.ibb.co.com/fdVkx87c/1.jpg", "https://i.ibb.co.com/tpSr6gxW/1.jpg", "https://i.ibb.co.com/CpyRDQYC/2.jpg",
-                    "https://i.ibb.co.com/TMBMpZ75/3.jpg", "https://i.ibb.co.com/JwZQRR2c/4.jpg"
-                ],
-                "prewedding": [
-                    "https://i.ibb.co.com/rfT9N63s/1.jpg", "https://i.ibb.co.com/Y7xLJNhS/2.jpg", "https://i.ibb.co.com/mVMhhtrD/3.jpg"
-                ],
-                "birthday": [
-                    "https://i.ibb.co.com/BHHkhS47/1.jpg", "https://i.ibb.co.com/mFgdGHpJ/2.jpg"
+                    "https://i.ibb.co.com/TMBMpZ75/3.jpg", "https://i.ibb.co.com/JwZQRR2c/4.jpg", "https://i.ibb.co.com/932rZvCh/5.jpg",
+                    "https://i.ibb.co.com/1JnN2LSb/6.jpg", "https://i.ibb.co.com/7dPvLcBS/7.jpg", "https://i.ibb.co.com/ZpcTMvwC/8.jpg",
+                    "https://i.ibb.co.com/Fq0qgD8G/9.jpg", "https://i.ibb.co.com/fzs80y86/10.jpg", "https://i.ibb.co.com/RpXD9nZK/11.jpg",
+                    "https://i.ibb.co.com/Vpt3YTzj/12.jpg", "https://i.ibb.co.com/n8qBjfZD/13.jpg", "https://i.ibb.co.com/KzBwxJcb/14.jpg",
+                    "https://i.ibb.co.com/HDN4CxRK/15.jpg", "https://i.ibb.co.com/S7ZR36bf/16.jpg", "https://i.ibb.co.com/hJ2pw6xy/17.jpg",
+                    "https://i.ibb.co.com/chzDNBS9/18.jpg", "https://i.ibb.co.com/gFgSLN2p/19.jpg", "https://i.ibb.co.com/rKbVmQd6/20.jpg",
+                    "https://i.ibb.co.com/Y7hhdw56/21.jpg", "https://i.ibb.co.com/kbwfXtb/22.jpg", "https://i.ibb.co.com/mVkhcYmh/23.jpg",
+                    "https://i.ibb.co.com/1GYw2z2d/24.jpg", "https://i.ibb.co.com/p6MQWPj4/25.jpg", "https://i.ibb.co.com/QvX02vFK/26.jpg",
+                    "https://i.ibb.co.com/8nf1VgS4/27.jpg", "https://i.ibb.co.com/Q7zJpX2b/28.jpg", "https://i.ibb.co.com/F44kVKmv/29.jpg",
+                    "https://i.ibb.co.com/C5kjHZLV/30.jpg", "https://i.ibb.co.com/wZL86DwR/31.jpg", "https://i.ibb.co.com/3bP85dV/32.jpg",
+                    "https://i.ibb.co.com/5WcMH4q1/33.jpg", "https://i.ibb.co.com/0pxSjP7H/34.jpg", "https://i.ibb.co.com/zkp4SwZ/35.jpg",
+                    "https://i.ibb.co.com/PZ2h2wXD/36.jpg", "https://i.ibb.co.com/9HL9Jhd6/37.jpg", "https://i.ibb.co.com/fG21F2z0/38.jpg"
                 ]
             }
         };
 
         let studioTerpilih = "studio1";
 
-        // Fungsi Memuat Gambar dari ImgBB ke Cover dan Preview Secara Acak
         function muatGambarLayanan(studio) {
             const containerAktif = studio === 'studio1' ? '#content-studio1' : '#content-studio2';
             
             document.querySelectorAll(`${containerAktif} .price-card`).forEach(card => {
                 const coverImg = card.querySelector('.card-cover');
-                if (!coverImg) return; // Skip card yang tidak ada gambar (seperti card additional)
+                if (!coverImg) return; 
                 
                 const kategori = coverImg.getAttribute('data-kategori');
                 const listFoto = imgbbData[studio][kategori] || [];
                 
                 if (listFoto.length > 0) {
-                    // Acak array foto agar dinamis setiap refresh
                     const shuffled = [...listFoto].sort(() => 0.5 - Math.random());
-                    
-                    // Set Cover Depan
                     coverImg.src = shuffled[0];
                     
-                    // Set Gambar Pratinjau (Maksimal 3 foto)
                     const previews = card.querySelectorAll('.preview-img');
                     previews.forEach((pImg, idx) => {
-                        // Ambil foto index ke 1, 2, 3 (karena index 0 sudah dipakai cover)
                         const photoIndex = (idx + 1) % shuffled.length; 
                         pImg.src = shuffled[photoIndex];
                     });
                 } else {
-                    // Jika data foto tidak ada, gunakan placeholder
                     coverImg.src = 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
                     card.querySelectorAll('.preview-img').forEach(pImg => {
-                        pImg.style.display = 'none'; // Sembunyikan grid preview jika tidak ada foto
+                        pImg.style.display = 'none'; 
                     });
                 }
             });
         }
 
-        // ===============================================
-        // FUNGSI GANTI TAB STUDIO
-        // ===============================================
         function gantiStudioLayanan(studio) {
             studioTerpilih = studio;
             document.getElementById('btn-studio1').classList.toggle('active', studio === 'studio1');
@@ -1194,18 +1222,13 @@
             document.getElementById('content-studio1').style.display = studio === 'studio1' ? 'block' : 'none';
             document.getElementById('content-studio2').style.display = studio === 'studio2' ? 'block' : 'none';
             
-            // Muat gambar saat tab diganti
             muatGambarLayanan(studio);
         }
 
-        // ===============================================
-        // FUNGSI SCROLL OTOMATIS (QUICK ACCESS PINTASAN)
-        // ===============================================
         function scrollToCategory(kategori) {
             let containerAktif = studioTerpilih === 'studio1' ? '#content-studio1' : '#content-studio2';
             let targetImg = document.querySelector(`${containerAktif} .card-cover[data-kategori="${kategori}"]`);
             
-            // Logika cerdas: Jika kategori tidak ada di studio saat ini, otomatis pindah tab studio sebelahnya!
             if (!targetImg) {
                 const studioLain = studioTerpilih === 'studio1' ? 'studio2' : 'studio1';
                 const targetLain = document.querySelector(`#content-${studioLain} .card-cover[data-kategori="${kategori}"]`);
@@ -1215,14 +1238,13 @@
                     containerAktif = `#content-${studioLain}`;
                     targetImg = targetLain;
                 } else {
-                    return; // Keluar jika data tidak ditemukan di kedua studio
+                    return; 
                 }
             }
             
             if (targetImg) {
                 const targetCard = targetImg.closest('.price-card');
                 
-                // Kalkulasi jarak scroll (diberi jarak agar tidak tertutup header)
                 const offset = 100; 
                 const bodyRect = document.body.getBoundingClientRect().top;
                 const elementRect = targetCard.getBoundingClientRect().top;
@@ -1233,29 +1255,23 @@
                     behavior: 'smooth'
                 });
 
-                // Buka Accordion otomatis
                 const wrapper = targetCard.querySelector('.card-details-wrapper');
                 const btnToggle = targetCard.querySelector('.btn-toggle');
                 if (wrapper && btnToggle) {
                     const icon = btnToggle.querySelector('i');
-                    if (!wrapper.style.maxHeight || wrapper.style.maxHeight === '0px') {
-                        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-                        if(icon) icon.style.transform = 'rotate(180deg)';
-                        btnToggle.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
-                    }
+                    // Mengubah nilai tinggi dengan pixel mutlak agar tidak terpotong gambar yang loading lambat
+                    wrapper.style.maxHeight = (wrapper.scrollHeight + 800) + "px"; 
+                    if(icon) icon.style.transform = 'rotate(180deg)';
+                    btnToggle.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
                 }
 
-                // Berikan animasi highlight (border nyala) sesaat
                 targetCard.classList.add('highlight-card-effect');
                 setTimeout(() => {
                     targetCard.classList.remove('highlight-card-effect');
-                }, 2000); 
+                }, 2500); 
             }
         }
 
-        // ===============================================
-        // FUNGSI ACCORDION BUKA-TUTUP PAKET
-        // ===============================================
         document.querySelectorAll('.btn-toggle').forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.price-card');
@@ -1263,25 +1279,32 @@
                 const icon = this.querySelector('i');
 
                 if (wrapper.style.maxHeight) {
-                    // Jika Sedang Terbuka -> Tutup
                     wrapper.style.maxHeight = null;
                     icon.style.transform = 'rotate(0deg)';
                     this.innerHTML = 'Lihat Detail Paket <i class="fas fa-chevron-down"></i>';
                 } else {
-                    // Jika Sedang Tertutup -> Buka
-                    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+                    wrapper.style.maxHeight = (wrapper.scrollHeight + 800) + "px";
                     icon.style.transform = 'rotate(180deg)';
                     this.innerHTML = 'Tutup Detail <i class="fas fa-chevron-up"></i>';
                 }
             });
         });
 
-        // Jalankan render awal saat halaman dimuat
         muatGambarLayanan("studio1");
+
+        // PENANGKAP EVENT DARI INDEX.HTML
+        window.addEventListener('load', () => {
+            const jumpTo = localStorage.getItem('scrollToKategori');
+            if (jumpTo) {
+                setTimeout(() => {
+                    scrollToCategory(jumpTo);
+                }, 300);
+                localStorage.removeItem('scrollToKategori');
+            }
+        });
     </script>
 
     <script>
-        // Hamburger Menu Mobile Logic
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
